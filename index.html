@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UPS Rehberi — Türkiye'nin Bağımsız UPS Bilgi Merkezi</title>
 <meta name="description" content="Türkiye'nin bağımsız UPS bilgi merkezi. VA hesabı, UPS türleri karşılaştırması, uzman model önerileri ve ücretsiz UPS seçim hesaplayıcı.">
-<!-- Favicon - logo.png veya favicon.ico dosyasını repo köküne yükleyin -->
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="logo.png">
+<!-- Favicon - inline SVG şimşek ikonu -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Cpolygon points='19,3 9,18 16,18 13,29 23,14 16,14' fill='%23E8A820'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Cpolygon points='19,3 9,18 16,18 13,29 23,14 16,14' fill='%23E8A820'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Mono:wght@300;400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0d1117;--paper:#f5f0e8;--paper2:#ede8dc;--accent:#c8410a;--accent2:#1a6b3a;--muted:#6b6356;--border:#d4cec4;--white:#fdfaf5;}
@@ -307,28 +306,28 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 
 <div class="topbar">
   <span>📍 upsrehberi.com · Türkiye'nin bağımsız UPS bilgi merkezi</span>
-  <span>Güncelleme: Nisan 2026 &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#0a63646c654a7f7a79786f62686f786324696567">İletişim</a> &nbsp;·&nbsp; <a href="#">RSS</a></span>
+  <span>Güncelleme: Nisan 2026 &nbsp;·&nbsp; <a href="#iletisim" id="topbar-contact">İletişim</a> &nbsp;·&nbsp; <a href="#">RSS</a></span>
 </div>
 
 <nav>
-  <div class="logo" onclick="go('home')">⚡ UPS Rehberi <span class="logo-badge">2026</span></div>
+  <div class="logo" data-page="home">⚡ UPS Rehberi <span class="logo-badge">2026</span></div>
   <ul class="nav-links">
-    <li><a id="n-home" class="active" onclick="go('home')">Ana Sayfa</a></li>
-    <li><a id="n-guide" onclick="go('guide')">Satın Alma Rehberi</a></li>
-    <li><a id="n-types" onclick="go('types')">UPS Türleri</a></li>
-    <li><a id="n-blog" onclick="go('blog')">Blog</a></li>
-    <li><a id="n-glossary" onclick="go('glossary')">Sözlük</a></li>
+    <li><a id="n-home" class="active" data-page="home">Ana Sayfa</a></li>
+    <li><a id="n-guide" data-page="guide">Satın Alma Rehberi</a></li>
+    <li><a id="n-types" data-page="types">UPS Türleri</a></li>
+    <li><a id="n-blog" data-page="blog">Blog</a></li>
+    <li><a id="n-glossary" data-page="glossary">Sözlük</a></li>
     <li><a href="https://www.aytechelektromarket.com" target="_blank" class="nav-cta">🛒 UPS Satın Al</a></li>
   </ul>
 </nav>
 
 <div class="page-tabs">
-  <button class="page-tab active" id="t-home" onclick="go('home')">🏠 Ana Sayfa</button>
-  <button class="page-tab" id="t-guide" onclick="go('guide')">📖 Satın Alma Rehberi</button>
-  <button class="page-tab" id="t-types" onclick="go('types')">⚡ UPS Türleri</button>
-  <button class="page-tab" id="t-blog" onclick="go('blog')">📰 Blog</button>
-  <button class="page-tab" id="t-glossary" onclick="go('glossary')">📚 Sözlük</button>
-  <button class="page-tab" id="t-calc" onclick="go('calc')">🔋 UPS Hesaplayıcı</button>
+  <button class="page-tab active" id="t-home" data-page="home">🏠 Ana Sayfa</button>
+  <button class="page-tab" id="t-guide" data-page="guide">📖 Satın Alma Rehberi</button>
+  <button class="page-tab" id="t-types" data-page="types">⚡ UPS Türleri</button>
+  <button class="page-tab" id="t-blog" data-page="blog">📰 Blog</button>
+  <button class="page-tab" id="t-glossary" data-page="glossary">📚 Sözlük</button>
+  <button class="page-tab" id="t-calc" data-page="calc">🔋 UPS Hesaplayıcı</button>
 </div>
 
 <!-- ════════ ANA SAYFA ════════ -->
@@ -340,8 +339,8 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
         <h1>Doğru UPS'i Seçin,<br><em>Cihazlarınızı</em><br>Koruyun.</h1>
         <p class="hero-sub">Elektrik kesintisi, voltaj dalgalanması, şebeke gürültüsü — bunların hepsi cihazlarınıza sessizce zarar verir. Marka baskısı olmadan, teknik gerçeklere dayalı seçim rehberleri sunuyoruz.</p>
         <div class="hero-btns">
-          <button class="btn-primary" onclick="go('guide')">📖 Satın Alma Rehberini Oku</button>
-          <button class="btn-ghost" onclick="go('calc')">⚡ UPS Hesapla</button>
+          <button class="btn-primary" data-page="guide">📖 Satın Alma Rehberini Oku</button>
+          <button class="btn-ghost" data-page="calc">⚡ UPS Hesapla</button>
         </div>
       </div>
       <div class="fade-up d2">
@@ -371,14 +370,14 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <h2>Hangi UPS Sizin İçin?</h2>
       <p class="section-sub">Kullanım yerinizi seçin, ihtiyacınıza özel rehbere geçin.</p>
       <div class="cat-grid">
-        <div class="cat-card" onclick="go('guide')"><span class="cat-emoji">🏠</span><div class="cat-title">Ev Kullanımı</div><div class="cat-desc">Modem, TV, aydınlatma. Kesintide internete bağlı kalın.</div><div class="cat-arrow">Rehbere git →</div></div>
-        <div class="cat-card" onclick="go('blog')"><span class="cat-emoji">💻</span><div class="cat-title">Bilgisayar & Ofis</div><div class="cat-desc">Ani kapanmalardan korunun. Veri kaybını önleyin.</div><div class="cat-arrow">Rehbere git →</div></div>
+        <div class="cat-card" data-page="guide"><span class="cat-emoji">🏠</span><div class="cat-title">Ev Kullanımı</div><div class="cat-desc">Modem, TV, aydınlatma. Kesintide internete bağlı kalın.</div><div class="cat-arrow">Rehbere git →</div></div>
+        <div class="cat-card" data-page="blog"><span class="cat-emoji">💻</span><div class="cat-title">Bilgisayar & Ofis</div><div class="cat-desc">Ani kapanmalardan korunun. Veri kaybını önleyin.</div><div class="cat-arrow">Rehbere git →</div></div>
         <a class="cat-card" href="https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/" target="_blank"><span class="cat-emoji">🎮</span><div class="cat-title">Gaming UPS</div><div class="cat-desc">Yüksek güçlü GPU'lar için. Saf sinüs, yüksek kapasite.</div><div class="cat-arrow">Modelleri gör →</div></a>
-        <div class="cat-card" onclick="go('blog')"><span class="cat-emoji">🔥</span><div class="cat-title">Kombi & Isıtma</div><div class="cat-desc">Kış ortasında kart arızasından korunun. Saf sinüs zorunlu!</div><div class="cat-arrow">Rehbere git →</div></div>
-        <div class="cat-card" onclick="go('guide')"><span class="cat-emoji">🗄️</span><div class="cat-title">Sunucu & Kurumsal</div><div class="cat-desc">Kritik veri kaybını önleyin. Online UPS ve SNMP.</div><div class="cat-arrow">Rehbere git →</div></div>
+        <div class="cat-card" data-page="blog"><span class="cat-emoji">🔥</span><div class="cat-title">Kombi & Isıtma</div><div class="cat-desc">Kış ortasında kart arızasından korunun. Saf sinüs zorunlu!</div><div class="cat-arrow">Rehbere git →</div></div>
+        <div class="cat-card" data-page="guide"><span class="cat-emoji">🗄️</span><div class="cat-title">Sunucu & Kurumsal</div><div class="cat-desc">Kritik veri kaybını önleyin. Online UPS ve SNMP.</div><div class="cat-arrow">Rehbere git →</div></div>
         <a class="cat-card" href="https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/" target="_blank"><span class="cat-emoji">🛗</span><div class="cat-title">Asansör UPS</div><div class="cat-desc">Güvenli iniş (ARD) için. Saf sinüs, inrush koruması.</div><div class="cat-arrow">Modeli incele →</div></a>
-        <div class="cat-card" onclick="go('guide')"><span class="cat-emoji">📷</span><div class="cat-title">Güvenlik Sistemleri</div><div class="cat-desc">DVR, NVR ve IP kameralar. Kesintide kör kalmayın.</div><div class="cat-arrow">Rehbere git →</div></div>
-        <div class="cat-card" style="background:var(--ink);color:var(--paper);" onclick="go('calc')"><span class="cat-emoji">⚡</span><div class="cat-title" style="color:var(--paper);">UPS Hesaplayıcı</div><div class="cat-desc" style="color:#6b6356;">Yükünüzü girin, kaç dakika besleme alacağınızı görün.</div><div class="cat-arrow">Hesaplamaya başla →</div></div>
+        <div class="cat-card" data-page="guide"><span class="cat-emoji">📷</span><div class="cat-title">Güvenlik Sistemleri</div><div class="cat-desc">DVR, NVR ve IP kameralar. Kesintide kör kalmayın.</div><div class="cat-arrow">Rehbere git →</div></div>
+        <div class="cat-card" style="background:var(--ink);color:var(--paper);" data-page="calc"><span class="cat-emoji">⚡</span><div class="cat-title" style="color:var(--paper);">UPS Hesaplayıcı</div><div class="cat-desc" style="color:#6b6356;">Yükünüzü girin, kaç dakika besleme alacağınızı görün.</div><div class="cat-arrow">Hesaplamaya başla →</div></div>
       </div>
     </div>
   </section>
@@ -388,9 +387,9 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <h2>Öne Çıkan Rehberler</h2>
       <p class="section-sub">En çok okunan teknik rehberler ve pratik karşılaştırmalar.</p>
       <div class="blog-grid">
-        <div class="blog-card" onclick="go('guide')"><div class="blog-thumb"><div class="blog-thumb-pat"></div>📘<div class="blog-tag">KILAVUZ</div></div><div class="blog-body"><div class="blog-meta">OCAK 2026 · 18 DK</div><div class="blog-title">UPS Satın Alma Rehberi 2026</div><div class="blog-excerpt">VA ve Watt farkından UPS türlerine, akü süresinden sinüs çıkışına kadar her şey.</div><div class="blog-read">Rehberi oku →</div></div></div>
-        <div class="blog-card" onclick="go('blog')"><div class="blog-thumb"><div class="blog-thumb-pat"></div>🔥<div class="blog-tag">BLOG</div></div><div class="blog-body"><div class="blog-meta">ŞUBAT 2026 · 9 DK</div><div class="blog-title">Kombi ve Bilgisayar İçin Hangi UPS?</div><div class="blog-excerpt">Simüle sinüs neden kombi kartını yakabilir? Saf sinüs zorunluluğunu açıklıyoruz.</div><div class="blog-read">Makaleyi oku →</div></div></div>
-        <div class="blog-card" onclick="go('blog')"><div class="blog-thumb"><div class="blog-thumb-pat"></div>🛗<div class="blog-tag">TEKNİK</div></div><div class="blog-body"><div class="blog-meta">MART 2026 · 7 DK</div><div class="blog-title">Asansörler İçin UPS ve Güvenli İniş</div><div class="blog-excerpt">Elektrik kesintisinde kabini en yakın kata indiren ARD sistemlerini anlattık.</div><div class="blog-read">Makaleyi oku →</div></div></div>
+        <div class="blog-card" data-page="guide"><div class="blog-thumb"><div class="blog-thumb-pat"></div>📘<div class="blog-tag">KILAVUZ</div></div><div class="blog-body"><div class="blog-meta">OCAK 2026 · 18 DK</div><div class="blog-title">UPS Satın Alma Rehberi 2026</div><div class="blog-excerpt">VA ve Watt farkından UPS türlerine, akü süresinden sinüs çıkışına kadar her şey.</div><div class="blog-read">Rehberi oku →</div></div></div>
+        <div class="blog-card" data-page="blog"><div class="blog-thumb"><div class="blog-thumb-pat"></div>🔥<div class="blog-tag">BLOG</div></div><div class="blog-body"><div class="blog-meta">ŞUBAT 2026 · 9 DK</div><div class="blog-title">Kombi ve Bilgisayar İçin Hangi UPS?</div><div class="blog-excerpt">Simüle sinüs neden kombi kartını yakabilir? Saf sinüs zorunluluğunu açıklıyoruz.</div><div class="blog-read">Makaleyi oku →</div></div></div>
+        <div class="blog-card" data-page="blog"><div class="blog-thumb"><div class="blog-thumb-pat"></div>🛗<div class="blog-tag">TEKNİK</div></div><div class="blog-body"><div class="blog-meta">MART 2026 · 7 DK</div><div class="blog-title">Asansörler İçin UPS ve Güvenli İniş</div><div class="blog-excerpt">Elektrik kesintisinde kabini en yakın kata indiren ARD sistemlerini anlattık.</div><div class="blog-read">Makaleyi oku →</div></div></div>
       </div>
     </div>
   </section>
@@ -415,7 +414,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
         </table>
         <div class="info-box"><strong>AVR (Otomatik Voltaj Düzenleyici):</strong> Voltajı akü kullanmadan sabit tutan devredir. Türkiye şebekesinin dalgalı yapısında büyük avantaj sağlar.</div>
         <h3 id="g3">3. VA ile Watt Farkı</h3>
-        <p>VA görünür güç, Watt ise gerçek güçtir. Formül: <strong style="color:var(--paper);">Watt = VA × Güç Faktörü (tipik: 0.7)</strong><br>Pratik hesap: Tüm cihazların wattını toplayın → 1.25 ile çarpın → 0.7'ye bölün → Çıkan VA'ya en yakın modeli seçin. <button onclick="go('calc')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">Hesaplayıcıyı kullanın →</button></p>
+        <p>VA görünür güç, Watt ise gerçek güçtir. Formül: <strong style="color:var(--paper);">Watt = VA × Güç Faktörü (tipik: 0.7)</strong><br>Pratik hesap: Tüm cihazların wattını toplayın → 1.25 ile çarpın → 0.7'ye bölün → Çıkan VA'ya en yakın modeli seçin. <button data-page="calc" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">Hesaplayıcıyı kullanın →</button></p>
         <h3 id="g4">4. Akü Süresi</h3>
         <p>%50 yük için 1 kVA (2×9Ah) model ≈ 14 dakika. %25 yükte 30+ dakika. Kutudaki süre genellikle %50 yük varsayımı ile verilmiştir. Kesin hesap için hesaplayıcımızı kullanın.</p>
         <h3 id="g5">5. Sinüs Çıkışı</h3>
@@ -471,7 +470,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
         <div class="type-card" style="border-color:var(--accent);border-width:2px;position:relative;"><div style="position:absolute;top:-10px;left:18px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 11px;border-radius:99px;font-family:'DM Mono',monospace;">EN POPÜLER</div><div style="font-size:34px;margin-bottom:14px;">🟢</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:19px;margin-bottom:7px;">Line-Interactive</div><div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;">AVR devresi voltajı düzenler. Geçiş süresi 2–6ms. Fiyat/performans açısından en verimli kategori.</div><div style="font-size:12px;"><strong>✅</strong> AVR, saf sinüs çıkışı, uzun akü ömrü</div><div style="font-size:12px;margin-top:5px;"><strong>❌</strong> Frekans sorunlarına tam koruma yok</div><div style="margin-top:11px;padding:7px 11px;background:#fff0ec;border-radius:6px;font-size:12px;"><strong>Kimler için:</strong> PC, kombi, asansör, NAS, KOBİ</div></div>
         <div class="type-card"><div style="font-size:34px;margin-bottom:14px;">🔵</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:19px;margin-bottom:7px;">Online (Double Conv.)</div><div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;">Cihaz her zaman invertörden beslenir. Transfer süresi 0ms. Tam elektriksel izolasyon.</div><div style="font-size:12px;"><strong>✅</strong> 0ms transfer, SNMP, tam koruma</div><div style="font-size:12px;margin-top:5px;"><strong>❌</strong> Daha pahalı, fazla ısı üretimi</div><div style="margin-top:11px;padding:7px 11px;background:var(--paper2);border-radius:6px;font-size:12px;"><strong>Kimler için:</strong> Sunucu, veri merkezi, tıbbi cihaz</div></div>
       </div>
-      <div style="text-align:center;"><button class="btn-primary" onclick="go('calc')">⚡ İhtiyacım İçin Hesapla</button></div>
+      <div style="text-align:center;"><button class="btn-primary" data-page="calc">⚡ İhtiyacım İçin Hesapla</button></div>
     </div>
   </section>
 </div>
@@ -506,7 +505,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
             <p style="color:#1a2560;">Profesyonel kurgu monitörleri veya üst düzey iş istasyonları için. Otomatik voltaj regülasyonunda sıfır hata toleransı.</p>
             <a href="https://schneiderups.com.tr" target="_blank" class="blog-rec-cta" style="background:#2a3880;">🔵 Schneider UPS Modellerini Keşfet</a>
           </div>
-          <p>Cihazlarınızın güvenliğini şansa bırakmayın. Doğru UPS seçimi, ekranınızın en ucuz ve en kesin sigortasıdır. İhtiyacınız olan gücü tam olarak hesaplamak için <button onclick="go('calc')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">UPS hesaplayıcımızı kullanın →</button></p>
+          <p>Cihazlarınızın güvenliğini şansa bırakmayın. Doğru UPS seçimi, ekranınızın en ucuz ve en kesin sigortasıdır. İhtiyacınız olan gücü tam olarak hesaplamak için <button data-page="calc" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">UPS hesaplayıcımızı kullanın →</button></p>
         </div>
       </div>
 
@@ -551,7 +550,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
           <ul class="num-list">
             <li>
               <div><strong>VA Değeri ile Watt Değerini Karıştırmak</strong>
-              UPS üzerindeki "1000 VA" ifadesi, cihazın 1000 Watt desteklediği anlamına gelmez! Güç faktörü (Power Factor) devreye girer — 1000 VA bir UPS genellikle 600–700 Watt civarı güç taşır. Cihazınız 800 Watt tüketiyorsa o UPS çalışmayacaktır. <button onclick="go('calc')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:14px;font-family:inherit;text-decoration:underline;">Doğru hesap için hesaplayıcımızı kullanın →</button></div>
+              UPS üzerindeki "1000 VA" ifadesi, cihazın 1000 Watt desteklediği anlamına gelmez! Güç faktörü (Power Factor) devreye girer — 1000 VA bir UPS genellikle 600–700 Watt civarı güç taşır. Cihazınız 800 Watt tüketiyorsa o UPS çalışmayacaktır. <button data-page="calc" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:14px;font-family:inherit;text-decoration:underline;">Doğru hesap için hesaplayıcımızı kullanın →</button></div>
             </li>
             <li>
               <div><strong>Yanlış Teknoloji Seçimi: Line-Interactive mi, Online mı?</strong>
@@ -633,44 +632,44 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <div class="c-sidebar">
         <div class="c-panel">
           <div class="c-cat" style="color:#6366f1;--cc:#6366f1;"><span style="width:3px;height:10px;background:#6366f1;border-radius:2px;display:inline-block;"></span>Bilgisayar & Oyun</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(1,300,'🖥️','Masaüstü PC (Orta)')"><span class="eq-ic">🖥️</span><span class="eq-nm">Masaüstü PC (Orta)</span><span class="eq-w">300W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(2,600,'🎮','Masaüstü PC (Oyun/Yüksek)')"><span class="eq-ic">🎮</span><span class="eq-nm">Masaüstü PC (Oyun/Yüksek)</span><span class="eq-w">600W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(3,65,'💻','Laptop / Notebook')"><span class="eq-ic">💻</span><span class="eq-nm">Laptop / Notebook</span><span class="eq-w">65W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(4,35,'🖥️','Monitör 24\"')"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 24"</span><span class="eq-w">35W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(5,60,'🖥️','Monitör 27\" 4K')"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 27" (4K)</span><span class="eq-w">60W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="1" data-w="300" data-ic="🖥️" data-nm="Masaüstü PC (Orta)"><span class="eq-ic">🖥️</span><span class="eq-nm">Masaüstü PC (Orta)</span><span class="eq-w">300W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="2" data-w="600" data-ic="🎮" data-nm="Masaüstü PC (Oyun/Yüksek)"><span class="eq-ic">🎮</span><span class="eq-nm">Masaüstü PC (Oyun/Yüksek)</span><span class="eq-w">600W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="3" data-w="65" data-ic="💻" data-nm="Laptop / Notebook"><span class="eq-ic">💻</span><span class="eq-nm">Laptop / Notebook</span><span class="eq-w">65W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="4" data-w="35" data-ic="🖥️" data-nm="Monitör 24\""><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 24"</span><span class="eq-w">35W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="5" data-w="60" data-ic="🖥️" data-nm="Monitör 27\" 4K"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 27" (4K)</span><span class="eq-w">60W</span></button></div>
           <div class="c-cat" style="color:#0ea5e9;"><span style="width:3px;height:10px;background:#0ea5e9;border-radius:2px;display:inline-block;"></span>Ağ & Sunucu</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(6,20,'📡','Modem / Router')"><span class="eq-ic">📡</span><span class="eq-nm">Modem / Router</span><span class="eq-w">20W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(7,15,'🔌','Network Switch (8P)')"><span class="eq-ic">🔌</span><span class="eq-nm">Network Switch (8 port)</span><span class="eq-w">15W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(8,30,'💾','NAS Depolama (2 disk)')"><span class="eq-ic">💾</span><span class="eq-nm">NAS Depolama (2 disk)</span><span class="eq-w">30W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(9,350,'🗄️','Sunucu Tower 1 CPU')"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Tower, 1 CPU)</span><span class="eq-w">350W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(10,700,'🗄️','Sunucu Rack 2 CPU')"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Rack, 2 CPU)</span><span class="eq-w">700W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="6" data-w="20" data-ic="📡" data-nm="Modem / Router"><span class="eq-ic">📡</span><span class="eq-nm">Modem / Router</span><span class="eq-w">20W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="7" data-w="15" data-ic="🔌" data-nm="Network Switch (8P)"><span class="eq-ic">🔌</span><span class="eq-nm">Network Switch (8 port)</span><span class="eq-w">15W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="8" data-w="30" data-ic="💾" data-nm="NAS Depolama (2 disk)"><span class="eq-ic">💾</span><span class="eq-nm">NAS Depolama (2 disk)</span><span class="eq-w">30W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="9" data-w="350" data-ic="🗄️" data-nm="Sunucu Tower 1 CPU"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Tower, 1 CPU)</span><span class="eq-w">350W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="10" data-w="700" data-ic="🗄️" data-nm="Sunucu Rack 2 CPU"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Rack, 2 CPU)</span><span class="eq-w">700W</span></button></div>
           <div class="c-cat" style="color:#f59e0b;"><span style="width:3px;height:10px;background:#f59e0b;border-radius:2px;display:inline-block;"></span>Ev & Isıtma</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(11,150,'🔥','Kombi (Standart)')"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Standart)</span><span class="eq-w">150W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(12,280,'🔥','Kombi (Yüksek Verimli)')"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Yüksek Verimli)</span><span class="eq-w">280W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(13,120,'❄️','Buzdolabı A++')"><span class="eq-ic">❄️</span><span class="eq-nm">Buzdolabı (A++)</span><span class="eq-w">120W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(14,80,'📺','Televizyon 50\" LED')"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 50" LED</span><span class="eq-w">80W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(15,120,'📺','Televizyon 65\" OLED')"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 65" OLED</span><span class="eq-w">120W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(16,20,'📡','Uydu Alıcısı')"><span class="eq-ic">📡</span><span class="eq-nm">Uydu Alıcısı</span><span class="eq-w">20W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(17,10,'💡','LED Panel 10W')"><span class="eq-ic">💡</span><span class="eq-nm">Aydınlatma (LED Panel)</span><span class="eq-w">10W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="11" data-w="150" data-ic="🔥" data-nm="Kombi (Standart)"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Standart)</span><span class="eq-w">150W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="12" data-w="280" data-ic="🔥" data-nm="Kombi (Yüksek Verimli)"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Yüksek Verimli)</span><span class="eq-w">280W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="13" data-w="120" data-ic="❄️" data-nm="Buzdolabı A++"><span class="eq-ic">❄️</span><span class="eq-nm">Buzdolabı (A++)</span><span class="eq-w">120W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="14" data-w="80" data-ic="📺" data-nm="Televizyon 50\" LED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 50" LED</span><span class="eq-w">80W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="15" data-w="120" data-ic="📺" data-nm="Televizyon 65\" OLED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 65" OLED</span><span class="eq-w">120W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="16" data-w="20" data-ic="📡" data-nm="Uydu Alıcısı"><span class="eq-ic">📡</span><span class="eq-nm">Uydu Alıcısı</span><span class="eq-w">20W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="17" data-w="10" data-ic="💡" data-nm="LED Panel 10W"><span class="eq-ic">💡</span><span class="eq-nm">Aydınlatma (LED Panel)</span><span class="eq-w">10W</span></button></div>
           <div class="c-cat" style="color:#a855f7;"><span style="width:3px;height:10px;background:#a855f7;border-radius:2px;display:inline-block;"></span>Asansör</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(18,1500,'🛗','Asansör Motoru (Küçük)')"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Küçük)</span><span class="eq-w">1500W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(19,2500,'🛗','Asansör Motoru (Orta)')"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Orta)</span><span class="eq-w">2500W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(20,80,'🎛️','Asansör Kontrol Kartı')"><span class="eq-ic">🎛️</span><span class="eq-nm">Asansör Kontrol Kartı</span><span class="eq-w">80W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="18" data-w="1500" data-ic="🛗" data-nm="Asansör Motoru (Küçük)"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Küçük)</span><span class="eq-w">1500W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="19" data-w="2500" data-ic="🛗" data-nm="Asansör Motoru (Orta)"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Orta)</span><span class="eq-w">2500W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="20" data-w="80" data-ic="🎛️" data-nm="Asansör Kontrol Kartı"><span class="eq-ic">🎛️</span><span class="eq-nm">Asansör Kontrol Kartı</span><span class="eq-w">80W</span></button></div>
           <div class="c-cat" style="color:#ef4444;"><span style="width:3px;height:10px;background:#ef4444;border-radius:2px;display:inline-block;"></span>Güvenlik</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(21,8,'📷','IP Kamera')"><span class="eq-ic">📷</span><span class="eq-nm">IP Kamera (adet başına)</span><span class="eq-w">8W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(22,25,'📷','DVR / NVR Kayıt')"><span class="eq-ic">📷</span><span class="eq-nm">DVR / NVR Kayıt Cihazı</span><span class="eq-w">25W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="21" data-w="8" data-ic="📷" data-nm="IP Kamera"><span class="eq-ic">📷</span><span class="eq-nm">IP Kamera (adet başına)</span><span class="eq-w">8W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="22" data-w="25" data-ic="📷" data-nm="DVR / NVR Kayıt"><span class="eq-ic">📷</span><span class="eq-nm">DVR / NVR Kayıt Cihazı</span><span class="eq-w">25W</span></button></div>
           <div class="c-cat" style="color:#10b981;"><span style="width:3px;height:10px;background:#10b981;border-radius:2px;display:inline-block;"></span>Ofis</div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(23,30,'💳','POS Terminali')"><span class="eq-ic">💳</span><span class="eq-nm">POS Terminali</span><span class="eq-w">30W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(24,400,'🖨️','Yazıcı Lazer')"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Lazer)</span><span class="eq-w">400W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" onclick="tog(25,30,'🖨️','Yazıcı Mürekkep')"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Mürekkep)</span><span class="eq-w">30W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="23" data-w="30" data-ic="💳" data-nm="POS Terminali"><span class="eq-ic">💳</span><span class="eq-nm">POS Terminali</span><span class="eq-w">30W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="24" data-w="400" data-ic="🖨️" data-nm="Yazıcı Lazer"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Lazer)</span><span class="eq-w">400W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="25" data-w="30" data-ic="🖨️" data-nm="Yazıcı Mürekkep"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Mürekkep)</span><span class="eq-w">30W</span></button></div>
         </div>
       </div>
       <div>
         <div class="ah-strip">
           <span class="ah-lbl">Akü Kapasitesi:</span>
           <div class="ah-tog">
-            <button class="ah-opt" id="ah7" onclick="setAh(7)">7 Ah</button>
-            <button class="ah-opt on" id="ah9" onclick="setAh(9)">9 Ah</button>
+            <button class="ah-opt" id="ah7" data-ah="7">7 Ah</button>
+            <button class="ah-opt on" id="ah9" data-ah="9">9 Ah</button>
           </div>
           <span style="font-size:10px;color:#334155;margin-left:8px;">12V · VRLA Kurşun-Asit</span>
         </div>
@@ -700,7 +699,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 </div>
 
 <!-- İLETİŞİM BÖLÜMÜ -->
-<div class="contact-section">
+<div class="contact-section" id="iletisim">
   <div class="contact-inner">
     <div>
       <div class="contact-label">Ücretsiz Danışmanlık</div>
@@ -715,9 +714,9 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
           <div class="contact-ch-icon" style="background:#3b82f6;">📞</div>
           <div><div class="contact-ch-label">TELEFON</div><div class="contact-ch-val">+90 505 852 53 31</div></div>
         </a>
-        <a class="contact-ch" href="mailto:info@aytechteknoloji.com.tr">
+        <a class="contact-ch" href="/cdn-cgi/l/email-protection#d9b0b7bfb699b8a0adbcbab1adbcb2b7b6b5b6b3b0f7bab6b4f7adab">
           <div class="contact-ch-icon" style="background:var(--accent);">✉️</div>
-          <div><div class="contact-ch-label">E-POSTA</div><div class="contact-ch-val">info@aytechteknoloji.com.tr</div></div>
+          <div><div class="contact-ch-label">E-POSTA</div><div class="contact-ch-val"><span class="__cf_email__" data-cfemail="274e49414867465e5342444f53424c49484b484d4e0944484a095355">[email&#160;protected]</span></div></div>
         </a>
         <div class="contact-ch" style="cursor:default;">
           <div class="contact-ch-icon" style="background:#6b6356;">📍</div>
@@ -753,7 +752,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
         <label class="form-label">Notunuz (İsteğe Bağlı)</label>
         <input type="text" class="form-input" placeholder="Kısa bir bilgi..." id="f-note">
       </div>
-      <button class="form-btn" onclick="submitForm()">📨 Teklif Talebini Gönder</button>
+      <button class="form-btn" id="form-submit-btn">📨 Teklif Talebini Gönder</button>
       <div id="form-msg" style="margin-top:12px;font-size:13px;color:#4ade80;display:none;text-align:center;font-family:'DM Mono',monospace;"></div>
     </div>
   </div>
@@ -767,57 +766,95 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <div><div class="footer-brand">⚡ UPS Rehberi</div><p class="footer-desc">Türkiye'nin bağımsız UPS bilgi merkezi. Teknik gerçeklere dayalı, marka baskısı olmadan doğru seçim.</p></div>
       <div>
         <div class="footer-col-title">Rehberler</div>
-        <ul class="footer-links"><li><span onclick="go('guide')">Satın Alma Rehberi</span></li><li><span onclick="go('types')">UPS Türleri</span></li><li><span onclick="go('guide')">VA vs Watt</span></li><li><span onclick="go('glossary')">UPS Sözlüğü</span></li></ul>
+        <ul class="footer-links"><li><span data-page="guide">Satın Alma Rehberi</span></li><li><span data-page="types">UPS Türleri</span></li><li><span data-page="guide">VA vs Watt</span></li><li><span data-page="glossary">UPS Sözlüğü</span></li></ul>
       </div>
       <div>
         <div class="footer-col-title">Kategoriler</div>
-        <ul class="footer-links"><li><span onclick="go('guide')">Ev Kullanımı</span></li><li><a href="https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/" target="_blank">Gaming UPS</a></li><li><span onclick="go('blog')">Kombi & Isıtma</span></li><li><a href="https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/" target="_blank">Asansör UPS</a></li><li><span onclick="go('guide')">Sunucu & Kurumsal</span></li></ul>
+        <ul class="footer-links"><li><span data-page="guide">Ev Kullanımı</span></li><li><a href="https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/" target="_blank">Gaming UPS</a></li><li><span data-page="blog">Kombi & Isıtma</span></li><li><a href="https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/" target="_blank">Asansör UPS</a></li><li><span data-page="guide">Sunucu & Kurumsal</span></li></ul>
       </div>
       <div>
         <div class="footer-col-title">Araçlar</div>
-        <ul class="footer-links"><li><span onclick="go('calc')">UPS Hesaplayıcı</span></li><li><span onclick="go('glossary')">Teknik Sözlük</span></li><li><span onclick="go('blog')">Blog</span></li><li><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09faaafacadbab7bdbaadb6f1bcb0b2">İletişim</a></li></ul>
+        <ul class="footer-links"><li><span data-page="calc">UPS Hesaplayıcı</span></li><li><span data-page="glossary">Teknik Sözlük</span></li><li><span data-page="blog">Blog</span></li><li><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09faaafacadbab7bdbaadb6f1bcb0b2">İletişim</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom"><span>© 2026 upsrehberi.com · upsrehberi.com.tr — Tüm hakları saklıdır.</span><span>Türkiye'nin bağımsız UPS rehberi</span></div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// ── EVENT DELEGATION — tüm data-page ve data-eq tıklamaları buradan yönetilir ──
+document.addEventListener('DOMContentLoaded', function() {
+
+  // NAV & TAB CLICKS
+  document.body.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-page]');
+    if (el) { e.preventDefault(); go(el.dataset.page); return; }
+
+    // EQ BUTTONS
+    const eq = e.target.closest('[data-eq]');
+    if (eq) { tog(+eq.dataset.eq, +eq.dataset.w, eq.dataset.ic, eq.dataset.nm); return; }
+
+    // QTY BUTTONS (chips)
+    const qp = e.target.closest('[data-qp]');
+    if (qp) { chgQ(+qp.dataset.qp, +1); return; }
+    const qm = e.target.closest('[data-qm]');
+    if (qm) { chgQ(+qm.dataset.qm, -1); return; }
+
+    // AH TOGGLE
+    const ah = e.target.closest('[data-ah]');
+    if (ah) { setAh(+ah.dataset.ah); return; }
+
+    // FORM SUBMIT
+    if (e.target.id === 'form-submit-btn') { submitForm(); return; }
+
+    // İLETİŞİM topbar linki
+    if (e.target.id === 'topbar-contact') {
+      e.preventDefault();
+      document.getElementById('iletisim').scrollIntoView({behavior:'smooth'});
+      return;
+    }
+  });
+
+  // init
+  render();
+});
+
 // ── NAVIGATION ──
 const PGS=['home','guide','types','blog','glossary','calc'];
 function go(id){
-  PGS.forEach(p=>{
-    const pg=document.getElementById('p-'+p);
-    const tb=document.getElementById('t-'+p);
-    const nv=document.getElementById('n-'+p);
-    if(pg)pg.classList.toggle('active',p===id);
-    if(tb)tb.classList.toggle('active',p===id);
-    if(nv)nv.classList.toggle('active',p===id);
+  PGS.forEach(function(p){
+    var pg=document.getElementById('p-'+p);
+    var tb=document.getElementById('t-'+p);
+    var nv=document.getElementById('n-'+p);
+    if(pg) pg.classList.toggle('active', p===id);
+    if(tb) tb.classList.toggle('active', p===id);
+    if(nv) nv.classList.toggle('active', p===id);
   });
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 // ── FORM SUBMIT → WhatsApp ──
 function submitForm(){
-  const name=document.getElementById('f-name').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  const need=document.getElementById('f-need').value;
-  const note=document.getElementById('f-note').value.trim();
+  var name=document.getElementById('f-name').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var need=document.getElementById('f-need').value;
+  var note=document.getElementById('f-note').value.trim();
+  var msg_el=document.getElementById('form-msg');
   if(!name||!phone){
-    document.getElementById('form-msg').style.color='#ef4444';
-    document.getElementById('form-msg').textContent='⚠️ Ad ve telefon alanları zorunludur.';
-    document.getElementById('form-msg').style.display='block';
+    msg_el.style.color='#ef4444';
+    msg_el.textContent='⚠️ Ad ve telefon alanları zorunludur.';
+    msg_el.style.display='block';
     return;
   }
-  const msg=`Merhaba, proje teklifi almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİhtiyaç: ${encodeURIComponent(need||'Belirtilmedi')}%0ANot: ${encodeURIComponent(note||'—')}`;
-  document.getElementById('form-msg').style.color='#4ade80';
-  document.getElementById('form-msg').textContent='✅ WhatsApp açılıyor...';
-  document.getElementById('form-msg').style.display='block';
-  setTimeout(()=>{ window.open('https://wa.me/905058525331?text='+msg,'_blank'); },600);
+  var msg='Merhaba, proje teklifi almak istiyorum.%0AAd Soyad: '+encodeURIComponent(name)+'%0ATelefon: '+encodeURIComponent(phone)+'%0Aİhtiyaç: '+encodeURIComponent(need||'Belirtilmedi')+'%0ANot: '+encodeURIComponent(note||'—');
+  msg_el.style.color='#4ade80';
+  msg_el.textContent='✅ WhatsApp açılıyor...';
+  msg_el.style.display='block';
+  setTimeout(function(){ window.open('https://wa.me/905058525331?text='+msg,'_blank'); }, 600);
 }
 
 // ── CALCULATOR ──
-const MODELS=[
+var MODELS=[
   {n:'650 VA',va:650, b:1 },
   {n:'700 VA',va:700, b:1 },
   {n:'850 VA',va:850, b:1 },
@@ -827,8 +864,8 @@ const MODELS=[
   {n:'6 kVA', va:6000,b:16},
   {n:'10 kVA',va:10000,b:20},
 ];
-const PF=0.7,EFF=0.85,V=12;
-let EQ={}, AH=9;
+var PF=0.7, EFF=0.85, V=12;
+var EQ={}, AH=9;
 
 function setAh(a){
   AH=a;
@@ -839,98 +876,105 @@ function setAh(a){
 }
 
 function tog(id,w,ic,nm){
-  const btn=document.querySelector('.eq-btn[onclick*="tog('+id+',"]');
+  var btn=document.querySelector('[data-eq="'+id+'"]');
   if(EQ[id]){
     delete EQ[id];
-    if(btn)btn.classList.remove('sel');
+    if(btn) btn.classList.remove('sel');
   } else {
-    EQ[id]={w,ic,nm,q:1};
-    if(btn)btn.classList.add('sel');
+    EQ[id]={w:w,ic:ic,nm:nm,q:1};
+    if(btn) btn.classList.add('sel');
   }
   renderChips(); render();
 }
 
 function chgQ(id,d){
-  if(!EQ[id])return;
+  if(!EQ[id]) return;
   EQ[id].q+=d;
   if(EQ[id].q<=0){
-    const btn=document.querySelector('.eq-btn[onclick*="tog('+id+',"]');
+    var btn=document.querySelector('[data-eq="'+id+'"]');
     delete EQ[id];
-    if(btn)btn.classList.remove('sel');
+    if(btn) btn.classList.remove('sel');
   }
   renderChips(); render();
 }
 
 function totals(){
-  let w=0,i=0;
-  Object.values(EQ).forEach(e=>{w+=e.w*e.q;i+=e.q;});
-  return{w,va:Math.round(w/PF),i};
+  var w=0, i=0;
+  Object.values(EQ).forEach(function(e){ w+=e.w*e.q; i+=e.q; });
+  return {w:w, va:Math.round(w/PF), i:i};
 }
 
 function mins(tw,m){
-  if(tw<=0)return Infinity;
+  if(tw<=0) return Infinity;
   return Math.round((m.b*V*AH*EFF/tw)*60);
 }
 function mLabel(m){
-  if(m===Infinity)return'—';
-  if(m<1)return'<1 dk';
-  if(m>=60)return Math.floor(m/60)+'s '+(m%60)+'dk';
+  if(m===Infinity) return '—';
+  if(m<1) return '<1 dk';
+  if(m>=60) return Math.floor(m/60)+'s '+(m%60)+'dk';
   return m+' dk';
 }
-function status(va,tva){
-  if(tva===0)return'idle';
-  const r=tva/va;
-  if(r>1)return'over';
-  if(r>0.8)return'warn';
-  if(r>0.4)return'good';
-  return'low';
+function getStatus(va,tva){
+  if(tva===0) return 'idle';
+  var r=tva/va;
+  if(r>1) return 'over';
+  if(r>0.8) return 'warn';
+  if(r>0.4) return 'good';
+  return 'low';
 }
-const SM={idle:{l:'—',c:'#334155'},over:{l:'AŞIM',c:'#ef4444'},warn:{l:'Yüksek Yük',c:'#f97316'},good:{l:'İdeal ★',c:'#22c55e'},low:{l:'Düşük Yük',c:'#3b82f6'}};
+var SM={idle:{l:'—',c:'#334155'},over:{l:'AŞIM',c:'#ef4444'},warn:{l:'Yüksek Yük',c:'#f97316'},good:{l:'İdeal ★',c:'#22c55e'},low:{l:'Düşük Yük',c:'#3b82f6'}};
 
 function renderChips(){
-  const a=document.getElementById('chips');
-  const ks=Object.keys(EQ);
-  if(!ks.length){a.innerHTML='<span style="font-size:11px;color:#334155;">Ekipman seçin...</span>';return;}
-  a.innerHTML=ks.map(id=>{
-    const e=EQ[id];
-    return`<div class="chip"><span>${e.ic}</span><span>${e.nm}</span>${e.q>1?`<span class="chip-qty">×${e.q}</span>`:''}<button class="chip-btn" onclick="chgQ(${id},-1)">−</button><button class="chip-btn" onclick="chgQ(${id},1)">+</button><span class="chip-w">${e.w*e.q}W</span></div>`;
+  var a=document.getElementById('chips');
+  var ks=Object.keys(EQ);
+  if(!ks.length){ a.innerHTML='<span style="font-size:11px;color:#334155;">Ekipman seçin...</span>'; return; }
+  a.innerHTML=ks.map(function(id){
+    var e=EQ[id];
+    return '<div class="chip"><span>'+e.ic+'</span><span>'+e.nm+'</span>'+(e.q>1?'<span class="chip-qty">×'+e.q+'</span>':'')+'<button class="chip-btn" data-qm="'+id+'">−</button><button class="chip-btn" data-qp="'+id+'">+</button><span class="chip-w">'+e.w*e.q+'W</span></div>';
   }).join('');
 }
 
 function render(){
-  const {w,va,i}=totals();
-  document.getElementById('sw').textContent=w+' W';
-  document.getElementById('sv').textContent=va+' VA';
-  document.getElementById('si').textContent=i;
-  const rows=document.getElementById('rrows');
-  const nm=document.getElementById('nomsg');
-  const cb=document.getElementById('ctabar');
-  if(w===0){rows.innerHTML='';nm.style.display='block';cb.style.display='none';return;}
-  nm.style.display='none'; cb.style.display='flex';
-  const best=MODELS.find(m=>status(m.va,va)==='good')||MODELS.find(m=>va<=m.va);
-  if(best){
+  var t=totals();
+  var w=t.w, va=t.va, i=t.i;
+  var sw=document.getElementById('sw');
+  var sv=document.getElementById('sv');
+  var si=document.getElementById('si');
+  if(sw) sw.textContent=w+' W';
+  if(sv) sv.textContent=va+' VA';
+  if(si) si.textContent=i;
+  var rows=document.getElementById('rrows');
+  var nm=document.getElementById('nomsg');
+  var cb=document.getElementById('ctabar');
+  if(!rows) return;
+  if(w===0){ rows.innerHTML=''; if(nm) nm.style.display='block'; if(cb) cb.style.display='none'; return; }
+  if(nm) nm.style.display='none';
+  if(cb) cb.style.display='flex';
+  var best=MODELS.find(function(m){ return getStatus(m.va,va)==='good'; }) || MODELS.find(function(m){ return va<=m.va; });
+  if(best && cb){
     document.getElementById('ctamain').textContent='İhtiyacınıza uygun model: '+best.n;
     document.getElementById('ctasub').textContent='Hesaplanan '+va+' VA yüke uygun UPS modellerini stoktan inceleyin.';
-    const btn=document.getElementById('ctabtn');
-    if(EQ[18]||EQ[19]||EQ[20]){btn.href='https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/';btn.innerHTML='🛗 Asansör UPS İncele';}
-    else if(w>450){btn.href='https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/';btn.innerHTML='🎮 Gaming UPS İncele';}
-    else{btn.href='https://www.aytechelektromarket.com';btn.innerHTML='🛒 Uygun Modelleri İncele';}
+    var btn=document.getElementById('ctabtn');
+    if(EQ[18]||EQ[19]||EQ[20]){ btn.href='https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/'; btn.textContent='🛗 Asansör UPS İncele'; }
+    else if(w>450){ btn.href='https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/'; btn.textContent='🎮 Gaming UPS İncele'; }
+    else{ btn.href='https://www.aytechelektromarket.com'; btn.textContent='🛒 Uygun Modelleri İncele'; }
   }
-  rows.innerHTML=MODELS.map(m=>{
-    const st=status(m.va,va);
-    const sm=SM[st];
-    const isRec=m===best;
-    const isOv=st==='over';
-    const mn=isOv?null:mins(w,m);
-    const lp=Math.min(Math.round((va/m.va)*100),100);
-    const bc=isOv?'#ef4444':st==='warn'?'#f97316':'#22c55e';
-    return`<div class="r-row${isRec?' rec':''}${isOv?' over':''}">
-      <div><div class="mn" style="color:${isRec?'#22c55e':isOv?'#ef4444':'#f1f5f9'};">${m.n}</div>${isRec?'<div class="mr" style="color:#22c55e;">★ ÖNERİLEN</div>':''}</div>
-      <div>${isOv?'<div style="font-size:12px;color:#ef4444;font-weight:700;font-family:\'DM Mono\',monospace;">— Yetersiz —</div>':`<div class="rv">${mLabel(mn)}</div><div class="rs">${m.b}×12V${AH}Ah · ${Math.round(m.b*V*AH*EFF)}Wh</div>`}</div>
-      <div style="padding-right:10px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span class="pill" style="background:${sm.c}22;color:${sm.c};">${sm.l}</span>
-          <span style="font-size:9px;color:#334155;">${lp}%</span>
-        </div>
-        <div class="btrack"><div class="bfill" style="width:${lp}%;background:${bc};"></div></div>
-        <div class="lpct">${va}
+  rows.innerHTML=MODELS.map(function(m){
+    var st=getStatus(m.va,va);
+    var sm=SM[st];
+    var isRec=m===best;
+    var isOv=st==='over';
+    var mn=isOv?null:mins(w,m);
+    var lp=Math.min(Math.round((va/m.va)*100),100);
+    var bc=isOv?'#ef4444':st==='warn'?'#f97316':'#22c55e';
+    return '<div class="r-row'+(isRec?' rec':'')+(isOv?' over':'')+'">'+
+      '<div><div class="mn" style="color:'+(isRec?'#22c55e':isOv?'#ef4444':'#f1f5f9')+';">'+m.n+'</div>'+(isRec?'<div class="mr" style="color:#22c55e;">★ ÖNERİLEN</div>':'')+'</div>'+
+      '<div>'+(isOv?'<div style="font-size:12px;color:#ef4444;font-weight:700;font-family:\'DM Mono\',monospace;">— Yetersiz —</div>':'<div class="rv">'+mLabel(mn)+'</div><div class="rs">'+m.b+'×12V'+AH+'Ah · '+Math.round(m.b*V*AH*EFF)+'Wh</div>')+'</div>'+
+      '<div style="padding-right:10px;"><div style="display:flex;justify-content:space-between;align-items:center;"><span class="pill" style="background:'+sm.c+'22;color:'+sm.c+';">'+sm.l+'</span><span style="font-size:9px;color:#334155;">'+lp+'%</span></div><div class="btrack"><div class="bfill" style="width:'+lp+'%;background:'+bc+';"></div></div><div class="lpct">'+va+' / '+m.va+' VA</div></div>'+
+      '<div><div class="bc">'+m.b+'×'+AH+'Ah</div><div class="bs">'+m.b+' adet akü</div></div>'+
+      '</div>';
+  }).join('');
+}
+</script>
+</body>
+</html>
