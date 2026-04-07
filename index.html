@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UPS Rehberi — Türkiye'nin Bağımsız UPS Bilgi Merkezi</title>
+<meta name="description" content="Türkiye'nin bağımsız UPS bilgi merkezi. VA hesabı, UPS türleri karşılaştırması, uzman model önerileri ve ücretsiz UPS seçim hesaplayıcı.">
+<!-- Favicon - logo.png veya favicon.ico dosyasını repo köküne yükleyin -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Mono:wght@300;400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#0d1117;--paper:#f5f0e8;--paper2:#ede8dc;--accent:#c8410a;--accent2:#1a6b3a;--muted:#6b6356;--border:#d4cec4;--white:#fdfaf5;}
@@ -211,6 +216,71 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 .fade-up{animation:fadeUp .6s ease both;}
 .d1{animation-delay:.1s;}.d2{animation-delay:.2s;}
+/* WHATSAPP FAB */
+.wa-fab{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.wa-btn{width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;position:relative;transition:transform .2s;}
+.wa-btn:hover{transform:scale(1.08);}
+.wa-btn svg{width:32px;height:32px;fill:#fff;}
+.wa-pulse{position:absolute;inset:0;border-radius:50%;background:#25d366;animation:waPulse 2s ease-out infinite;}
+@keyframes waPulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.7);opacity:0;}}
+.wa-tooltip{background:var(--ink);color:var(--paper);font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;white-space:nowrap;font-family:'Outfit',sans-serif;opacity:0;transform:translateX(10px);transition:all .2s;pointer-events:none;}
+.wa-fab:hover .wa-tooltip{opacity:1;transform:translateX(0);}
+/* İLETİŞİM BÖLÜMÜ */
+.contact-section{background:var(--ink);color:var(--paper);padding:80px 40px;}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.contact-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.contact-label::before{content:'';width:24px;height:1px;background:var(--accent);}
+.contact-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(24px,3vw,38px);letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
+.contact-desc{color:#a09880;font-size:15px;line-height:1.7;margin-bottom:32px;}
+.contact-channels{display:flex;flex-direction:column;gap:14px;}
+.contact-ch{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#181410;border:1px solid #2a2520;border-radius:10px;text-decoration:none;color:var(--paper);transition:border-color .15s;}
+.contact-ch:hover{border-color:var(--accent);}
+.contact-ch-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.contact-ch-label{font-size:11px;color:#6b6356;font-family:'DM Mono',monospace;letter-spacing:.06em;margin-bottom:3px;}
+.contact-ch-val{font-weight:600;font-size:14px;}
+.contact-form{background:#181410;border:1px solid #2a2520;border-radius:16px;padding:32px;}
+.form-title{font-family:'Fraunces',serif;font-weight:700;font-size:20px;margin-bottom:6px;color:var(--paper);}
+.form-sub{font-size:13px;color:#6b6356;margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:#6b6356;text-transform:uppercase;display:block;margin-bottom:7px;}
+.form-input{width:100%;background:#0f172a;border:1px solid #2a2520;border-radius:8px;padding:11px 14px;color:var(--paper);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color .15s;}
+.form-input:focus{border-color:var(--accent);}
+.form-input::placeholder{color:#334155;}
+.form-select{width:100%;background:#0f172a;border:1px solid #2a2520;border-radius:8px;padding:11px 14px;color:var(--paper);font-family:'Outfit',sans-serif;font-size:14px;outline:none;cursor:pointer;appearance:none;transition:border-color .15s;}
+.form-select:focus{border-color:var(--accent);}
+.form-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:8px;padding:13px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;margin-top:6px;}
+.form-btn:hover{background:#a33508;}
+/* BLOG SAYFASI GENİŞLETME */
+.blog-list{max-width:780px;margin:0 auto;}
+.blog-article{border-bottom:1px solid var(--border);padding:48px 0;}
+.blog-article:first-child{padding-top:0;}
+.blog-article:last-child{border-bottom:none;}
+.blog-art-tag{background:var(--ink);color:var(--paper);font-size:10px;font-weight:600;padding:3px 11px;border-radius:4px;font-family:'DM Mono',monospace;display:inline-block;margin-bottom:12px;}
+.blog-art-h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(22px,3vw,32px);letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;color:var(--ink);}
+.blog-art-meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:16px;}
+.blog-art-lead{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.blog-art-body h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin:28px 0 10px;color:var(--ink);}
+.blog-art-body h4{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--ink);}
+.blog-art-body p{font-size:15px;line-height:1.8;color:#2a2520;margin-bottom:16px;}
+.blog-art-body strong{color:var(--ink);}
+.blog-art-body ul{padding-left:20px;margin-bottom:16px;}
+.blog-art-body li{font-size:15px;line-height:1.8;color:#2a2520;margin-bottom:6px;}
+.blog-rec{background:#f0f8f4;border:1px solid #b8ddc8;border-radius:10px;padding:20px 22px;margin:20px 0;}
+.blog-rec-title{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--accent2);margin-bottom:6px;}
+.blog-rec p{font-size:13px;color:#2a5038;line-height:1.6;margin:0;}
+.blog-rec-cta{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:var(--accent2);color:#fff;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;}
+.blog-rec-cta:hover{background:#14502c;}
+.blog-error-box{background:#fff8f0;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 20px;margin:20px 0;font-size:14px;color:#5a3a1a;line-height:1.7;}
+.blog-error-box strong{color:var(--accent);}
+.num-list{counter-reset:num;list-style:none;padding:0;}
+.num-list li{counter-increment:num;display:flex;gap:14px;margin-bottom:20px;padding:16px;background:var(--paper2);border-radius:10px;}
+.num-list li::before{content:counter(num);font-family:'Fraunces',serif;font-weight:900;font-size:22px;color:var(--accent);flex-shrink:0;width:28px;line-height:1;}
+.num-list li div{font-size:14px;line-height:1.7;color:#2a2520;}
+.num-list li strong{color:var(--ink);display:block;margin-bottom:4px;font-size:15px;}
+.wa-inline{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;font-family:'Outfit',sans-serif;}
+.wa-inline:hover{background:#1da84d;}
+@media(max-width:860px){.contact-inner{grid-template-columns:1fr!important;gap:40px;}
+.wa-fab{bottom:18px;right:18px;}}
 @media(max-width:860px){
   .hero-grid,.pillar-inner,.footer-grid,.c-layout{grid-template-columns:1fr!important;}
   .pillar-toc{position:static;}
@@ -226,9 +296,18 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 </head>
 <body>
 
+<!-- WhatsApp FAB -->
+<div class="wa-fab">
+  <div class="wa-tooltip">Uzmanla Konuş 💬</div>
+  <a class="wa-btn" href="https://wa.me/905058525331?text=Merhaba%2C%20UPS%20konusunda%20destek%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile iletişim">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L0 24l6.314-1.506A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.865 9.865 0 01-5.022-1.37l-.36-.214-3.742.892.946-3.648-.235-.374A9.861 9.861 0 012.118 12C2.118 6.53 6.53 2.118 12 2.118c5.47 0 9.882 4.412 9.882 9.882 0 5.47-4.412 9.882-9.882 9.882z"/></svg>
+  </a>
+</div>
+
 <div class="topbar">
   <span>📍 upsrehberi.com · Türkiye'nin bağımsız UPS bilgi merkezi</span>
-  <span>Güncelleme: Nisan 2026 &nbsp;·&nbsp; <a href="mailto:info@upsrehberi.com">İletişim</a> &nbsp;·&nbsp; <a href="#">RSS</a></span>
+  <span>Güncelleme: Nisan 2026 &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#0a63646c654a7f7a79786f62686f786324696567">İletişim</a> &nbsp;·&nbsp; <a href="#">RSS</a></span>
 </div>
 
 <nav>
@@ -400,40 +479,105 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 <!-- ════════ BLOG ════════ -->
 <div id="p-blog" class="page-content">
   <div style="background:var(--white);padding:56px 40px;">
-    <div class="featured-article">
-      <div class="article-header">
-        <div class="article-meta"><span class="article-tag">BLOG · TEKNİK REHBER</span><span class="article-date">📅 Şubat 2026</span><span class="article-readtime">⏱ 9 dk okuma</span></div>
-        <h1 class="article-h1">Kombi, Asansör ve Bilgisayar İçin Hangi UPS Tercih Edilmeli?</h1>
-        <p class="article-lead">Kombiler, asansörler ve bilgisayarlar aynı kritik kategoride: hassas elektronik kontrol kartına sahip cihazlar. Yanlış seçilmiş bir UPS, koruma sağlamak yerine bizzat hasar verebilir.</p>
-      </div>
-      <div class="article-body">
-        <h2>Kombiler Neden UPS'e İhtiyaç Duyar?</h2>
-        <p>Modern kombiler <strong>elektronik kontrol kartlarına (PCB)</strong> sahiptir. Elektrik kesildiğinde veya gerilim dalgalandığında bu kart hasar görebilir. Bir kombi kartının tamiri <strong>2.000–8.000 TL</strong> arasındadır.</p>
-        <div class="article-info-box"><strong>⚠️ Kritik:</strong> Piyasadaki birçok giriş seviyesi UPS kesinti anında <strong>simüle sinüs</strong> üretir. Kombiler bu dalga formunu tanıyamaz — kart hasar görebilir. <strong>Saf sinüs (Pure Sine Wave) UPS şarttır.</strong></div>
-        <table class="article-table"><tr><th>Kombi Tipi</th><th>Güç</th><th>Önerilen UPS</th></tr><tr><td>Standart kombi</td><td>80–200W</td><td>500–1000VA</td></tr><tr><td>İnverter kombi</td><td>150–350W</td><td>1000VA</td></tr><tr><td>Kombi + pompa</td><td>+50–150W</td><td>1500VA</td></tr></table>
-        <div class="rec-box"><div class="rec-box-title">🟢 Tunçmatik ST Serisi — Kombi İçin Uzman Önerisi</div><p>Saf sinüs çıkışı, AVR devresi. Sessiz çalışması ile mutfak/kazan dairesi kurulumuna uygundur.</p><a href="https://www.aytechelektromarket.com" target="_blank" class="rec-box-cta">🛒 İncele ve Satın Al</a></div>
-        <h2>Asansörler İçin UPS — Güvenli İniş Zorunluluğu</h2>
-        <p>Motor yol verme anında anlık güç 3–5 katına çıkar (inrush current). <strong>Yüksek ani yük kapasitesi</strong>, <strong>saf sinüs çıkışı</strong> ve <strong>güvenli iniş (ARD)</strong> fonksiyonu asansör UPS'lerinde olmazsa olmaz. Kesinti anında kabin en yakın kata indirilir, kapılar açılır — yolcu mahsur kalmaz.</p>
-        <div class="rec-box"><div class="rec-box-title">🛗 Tunçmatik Lift 1500VA — Asansör İçin Uzman Önerisi</div><p>Asansör uygulamaları için özel tasarım. Line-interactive, saf sinüs, 2×9Ah. Kontrol kartı ve motor sürücüsünü tam koruma altında tutar.</p><a href="https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/" target="_blank" class="rec-box-cta">🛒 Tunçmatik Lift 1500VA — İncele ve Satın Al</a></div>
-        <h2>Bilgisayar & Gaming — Veri Kaybı Bir Anlık İş</h2>
-        <p>Oyun sırasında ani kapanma hem oyun ilerlemesini hem donanımı tehdit eder. Yüksek GPU'lar (RTX 4070+) yük altında 600–850W çeker.</p>
-        <table class="article-table"><tr><th>Sistem</th><th>Güç</th><th>UPS</th></tr><tr><td>Orta segment PC + monitör</td><td>~400W</td><td>1000VA</td></tr><tr><td>Yüksek perf. PC (RTX 4070+)</td><td>600–850W</td><td>2000VA+</td></tr><tr><td>İş istasyonu / küçük sunucu</td><td>350–700W</td><td>1500–2200VA</td></tr></table>
-        <div class="rec-box" style="background:#f0f0ff;border-color:#c0c0f0;"><div class="rec-box-title" style="color:#4040a0;">🎮 Gaming UPS Kategorisi</div><p style="color:#303060;">Yüksek güç faktörlü, saf sinüs çıkışlı gaming UPS modelleri.</p><a href="https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/" target="_blank" class="rec-box-cta" style="background:#4040a0;">🛒 Gaming UPS Modellerini Gör</a></div>
-        <h2>Özet Tablo</h2>
-        <table class="article-table">
-          <tr><th>Cihaz</th><th>Minimum Şart</th><th>Kapasite</th><th>Uzman Tercihi</th></tr>
-          <tr><td>Kombi</td><td>⚠️ Saf Sinüs</td><td>500–1000VA</td><td>Tunçmatik ST</td></tr>
-          <tr><td>Asansör</td><td>⚠️ Saf Sinüs + ARD</td><td>1500VA+</td><td>Tunçmatik Lift 1500VA</td></tr>
-          <tr><td>Ofis PC</td><td>Saf Sinüs Önerilen</td><td>1000–1500VA</td><td>Tunçmatik ST</td></tr>
-          <tr><td>Gaming PC</td><td>⚠️ Saf Sinüs</td><td>1500–2000VA+</td><td>Gaming UPS Kat.</td></tr>
-          <tr><td>Sunucu</td><td>Online/Line-Int.</td><td>2000VA+</td><td>APC Smart-UPS</td></tr>
-        </table>
-        <div style="text-align:center;margin-top:36px;padding:28px;background:var(--paper2);border-radius:12px;border:1px solid var(--border);">
-          <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:7px;">Hesabınızı yapmak ister misiniz?</div>
-          <p style="color:var(--muted);font-size:14px;margin-bottom:18px;">Ekipmanlarınızı seçin, kaç dakika besleme alacağınızı görün.</p>
-          <button class="btn-primary" onclick="go('calc')">⚡ UPS Hesaplayıcıya Git</button>
+    <div class="blog-list">
+
+      <!-- BLOG 1 -->
+      <div class="blog-article">
+        <div class="article-meta"><span class="article-tag">BLOG · EV & OFİS</span><span class="article-date">📅 Şubat 2026</span><span class="article-readtime">⏱ 8 dk okuma</span></div>
+        <h2 class="blog-art-h2">Binlerce Liralık Televizyonunuzu ve Oyuncu Monitörünüzü Elektrik Dalgalanmalarından Nasıl Korursunuz?</h2>
+        <p class="blog-art-lead">Elektrik kesintileri ve voltaj dalgalanmaları TV ve monitör panellerini nasıl yakar? Ev ve ofis için doğru UPS seçimi ile cihazlarınızı koruyun.</p>
+        <div class="blog-art-body">
+          <p>Evlerimizde ve ofislerimizde kullandığımız cihazların değerleri her geçen gün artıyor. 65 inç bir OLED televizyon veya yüksek yenileme hızına sahip bir oyuncu monitörü için ciddi bütçeler ayırıyoruz. Ancak gözden kaçırılan çok büyük bir tehlike var: Şebeke dalgalanmaları ve anlık elektrik kesintileri.</p>
+          <p>Birçok kullanıcı "Benim binamda jeneratör var" diyerek güvende olduğunu düşünür. Oysa jeneratör devreye girene kadar geçen o 10–15 saniyelik boşluk ve jeneratörün ürettiği dengesiz akım, hassas ekran panellerinin ve ana kartların baş düşmanıdır.</p>
+          <h3>Neden Zarar Görürler?</h3>
+          <p>Televizyonlar ve yeni nesil monitörler, son derece hassas <strong>güç yönetim kartları (SMPS)</strong> barındırır. Elektrik bir anlığına gidip geldiğinde (mikro-kesinti) veya voltaj aniden 250V'ye fırladığında (Peak), bu kartlar üzerindeki kapasitörler patlayabilir veya işlemci çipleri yanabilir.</p>
+          <div class="blog-error-box"><strong>⚠️ Dikkat:</strong> Servise getirilen TV ve monitörlerin büyük çoğunluğunda "Kullanıcı hatası / Şebeke dalgalanması garantiye girmez" yanıtı verilmektedir. Bu masraftan korunmanın tek yolu önceden UPS kullanmaktır.</div>
+          <h3>TV ve Monitörler İçin Hangi UPS Tercih Edilmeli?</h3>
+          <p>Bu noktada devasa endüstriyel sistemlere ihtiyacınız yok. Ev ve ofis ekosistemleri için <strong>Line-Interactive UPS</strong> sistemleri tam olarak bu iş için biçilmiş kaftandır. Sadece elektrik kesildiğinde bataryayı devreye sokmakla kalmaz — içindeki regülatör (AVR) sayesinde sürekli dalgalanan voltajı standart 220V seviyesinde tutarak cihazınıza temiz enerji gönderir.</p>
+          <h4>Kapasite Önerisi</h4>
+          <p>Ortalama bir 55" LED TV yaklaşık 100W–150W, güçlü bir oyuncu monitörü ise 50W–80W arası güç tüketir. Yanında konsol veya kasa çalıştıracaksanız ihtiyacınız olan kapasite genellikle <strong>800 VA – 1500 VA</strong> aralığındadır.</p>
+          <div class="blog-rec">
+            <div class="blog-rec-title">🟢 Fiyat/Performans: Tunçmatik Serileri</div>
+            <p>Türkiye şebeke şartlarına uygun, yaygın servis ağına sahip. TV ünitelerinin arkasına saklanabilecek kadar kompakt tasarım.</p>
+            <a href="https://www.aytechelektromarket.com" target="_blank" class="blog-rec-cta">🛒 Tunçmatik Modellerini İncele</a>
+          </div>
+          <div class="blog-rec" style="background:#f0f4ff;border-color:#c0cdf0;">
+            <div class="blog-rec-title" style="color:#2a3880;">🔵 Premium Ofisler İçin: Schneider Electric (APC)</div>
+            <p style="color:#1a2560;">Profesyonel kurgu monitörleri veya üst düzey iş istasyonları için. Otomatik voltaj regülasyonunda sıfır hata toleransı.</p>
+            <a href="https://schneiderups.com.tr" target="_blank" class="blog-rec-cta" style="background:#2a3880;">🔵 Schneider UPS Modellerini Keşfet</a>
+          </div>
+          <p>Cihazlarınızın güvenliğini şansa bırakmayın. Doğru UPS seçimi, ekranınızın en ucuz ve en kesin sigortasıdır. İhtiyacınız olan gücü tam olarak hesaplamak için <button onclick="go('calc')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">UPS hesaplayıcımızı kullanın →</button></p>
         </div>
       </div>
+
+      <!-- BLOG 2 -->
+      <div class="blog-article">
+        <div class="article-meta"><span class="article-tag">BLOG · GÜVENLİK SİSTEMLERİ</span><span class="article-date">📅 Mart 2026</span><span class="article-readtime">⏱ 7 dk okuma</span></div>
+        <h2 class="blog-art-h2">Güvenliğiniz Elektriğe Bağlı Kalmasın: Kamera ve CCTV Sistemleri İçin En İyi UPS Çözümleri</h2>
+        <p class="blog-art-lead">Elektrik kesildiğinde güvenlik kameraları çalışır mı? DVR, NVR ve IP kameralar için kesintisiz güç kaynağı seçimi nasıl yapılır?</p>
+        <div class="blog-art-body">
+          <p>Bir güvenlik sistemi kurmanın temel amacı "her an" tetikte olmaktır. Ancak çoğu işletme ve konut sahibi, en kritik anlarda sistemin savunmasız kalabileceğinin farkında değil. Hırsızlık girişimlerinin büyük bir kısmında ilk hamle elektriği kesmek olur.</p>
+          <p>Eğer kamera sisteminiz doğrudan şebekeye bağlıysa, o andan itibaren kayıt durur, kör nokta oluşur ve tüm yatırımınız işlevsiz kalır.</p>
+          <h3>Neden Standart Güç Kaynağı Yetmez?</h3>
+          <p>Kamera sistemleri hassas elektronik bileşenlerden oluşur. Sadece kesintiler değil, şebekedeki ani voltaj yükselmeleri de DVR/NVR kayıt cihazlarının hard disklerine zarar vererek <strong>geçmiş kayıtlarınızın silinmesine</strong> yol açabilir.</p>
+          <ul>
+            <li><strong>Kesintisiz Kayıt:</strong> Elektrik kesilse dahi sisteminiz saatlerce çalışmaya devam eder.</li>
+            <li><strong>Veri Güvenliği:</strong> Ani kapanmaların yol açtığı disk arızalarını ve veri kayıplarını önler.</li>
+            <li><strong>Uzun Ömür:</strong> Stabil voltaj sayesinde kameralarınızın ömrünü uzatır.</li>
+          </ul>
+          <h3>Kamera Sistemi İçin UPS Seçerken Nelere Dikkat Edilmeli?</h3>
+          <p><strong>Kamera sayısı</strong> toplam Watt ihtiyacını belirler. <strong>Gece görüşü (IR)</strong> devredeyken kameralar gündüze oranla 2–3 kat fazla güç tüketir — mutlaka gece modu baz alınmalıdır. <strong>İhtiyaç duyulan süre</strong> ise akü kapasitesini belirler: 1 saat mi, 10 saat mi?</p>
+          <div class="blog-rec">
+            <div class="blog-rec-title">🟢 Küçük İşletme & Ev (4–8 Kamera): Tunçmatik Serisi</div>
+            <p>Kompakt yapısı sayesinde güvenlik panolarının içine veya yakınına kolayca monte edilebilir. Türkiye çapındaki yaygın servis ağı ile en çok önerdiğimiz seçeneklerin başında gelir.</p>
+            <a href="https://www.aytechelektromarket.com" target="_blank" class="blog-rec-cta">🛒 Güvenlik Sistemi UPS Modellerini İncele</a>
+          </div>
+          <div class="blog-rec" style="background:#f0f4ff;border-color:#c0cdf0;">
+            <div class="blog-rec-title" style="color:#2a3880;">🔵 Büyük Projeler & Fabrikalar: Schneider Electric Online UPS</div>
+            <p style="color:#1a2560;">Onlarca kameradan oluşan, IP tabanlı ve POE switch kullanan karmaşık sistemler için. Geçiş süresi "0" milisaniye — en ufak bir dalgalanma bile sisteminize ulaşmaz.</p>
+            <a href="https://schneiderups.com.tr" target="_blank" class="blog-rec-cta" style="background:#2a3880;">🔵 Kurumsal UPS Çözümlerini Gör</a>
+          </div>
+          <p>Güvenliğinizi şansa bırakmayın. Hangi UPS modelinin sisteminize uygun olduğunu belirlemek için <a href="https://wa.me/905058525331?text=Kamera%20sistemim%20i%C3%A7in%20UPS%20deste%C4%9Fi%20almak%20istiyorum." target="_blank" style="color:var(--accent);font-weight:700;">uzman ekibimizle WhatsApp üzerinden iletişime geçin →</a></p>
+        </div>
+      </div>
+
+      <!-- BLOG 3 -->
+      <div class="blog-article">
+        <div class="article-meta"><span class="article-tag">BLOG · SATIN ALMA REHBERİ</span><span class="article-date">📅 Nisan 2026</span><span class="article-readtime">⏱ 6 dk okuma</span></div>
+        <h2 class="blog-art-h2">UPS Seçerken Yapılan 5 Kritik Hata (Paranızı ve Cihazınızı Çöpe Atmayın!)</h2>
+        <p class="blog-art-lead">Kesintisiz Güç Kaynağı alırken en sık yapılan hatalar ve doğru çözümler. Line-Interactive mi Online mı? VA mı Watt mı?</p>
+        <div class="blog-art-body">
+          <p>Bir UPS almak, sadece bir "yedek pil" almak değildir — değerli cihazlarınız için bir sigorta poliçesi almaktır. Ancak çoğu kullanıcı, sadece fiyat etiketine veya kutu üzerindeki VA değerine bakarak yanlış tercih yapıyor. İşte sahadaki deneyimimizle, size binlerce lira zarar ettirebilecek 5 kritik hata:</p>
+          <ul class="num-list">
+            <li>
+              <div><strong>VA Değeri ile Watt Değerini Karıştırmak</strong>
+              UPS üzerindeki "1000 VA" ifadesi, cihazın 1000 Watt desteklediği anlamına gelmez! Güç faktörü (Power Factor) devreye girer — 1000 VA bir UPS genellikle 600–700 Watt civarı güç taşır. Cihazınız 800 Watt tüketiyorsa o UPS çalışmayacaktır. <button onclick="go('calc')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:14px;font-family:inherit;text-decoration:underline;">Doğru hesap için hesaplayıcımızı kullanın →</button></div>
+            </li>
+            <li>
+              <div><strong>Yanlış Teknoloji Seçimi: Line-Interactive mi, Online mı?</strong>
+              Her UPS her cihaza uymaz. Standart ev bilgisayarları için Line-Interactive yeterliyken; sunucular, medikal cihazlar veya kritik ekipmanlar için mutlaka Online UPS seçilmelidir. Yanlış seçim, hassas cihazınızın voltaj dalgalanmalarından etkilenmesine neden olur.</div>
+            </li>
+            <li>
+              <div><strong>Gelecekteki İhtiyaçları Hesaba Katmamak</strong>
+              Bugün 4 kameranız olabilir ama yarın 8'e çıkacaksa bugün aldığınız UPS yetersiz kalacaktır. Her zaman mevcut ihtiyacınızın en az <strong>%20–25 üzerinde</strong> kapasite seçmek, uzun vadede tasarruf sağlar.</div>
+            </li>
+            <li>
+              <div><strong>Akü Kalitesini ve Servis Ağını Önemsememek</strong>
+              Bir UPS'in kalbi aküsüdür. Ucuz, markasız bir cihaz aldığınızda 1 yıl sonra aküsü bittiğinde yedek parça bulamazsınız. Tunçmatik gibi Türkiye'nin her yerinde servisi olan veya Schneider gibi dünya devi markaları tercih edin — cihazın 5–10 yıl boyunca size hizmet etmesini sağlar.</div>
+            </li>
+            <li>
+              <div><strong>Çevresel Koşulları Göz Ardı Etmek</strong>
+              UPS'leri kapalı, havasız dolapların içine hapsetmeyin. Cihazlar çalışırken ısı üretir. Havalandırması kötü bir ortamda aküler çok daha hızlı şişer ve ömrünü erken tamamlar.</div>
+            </li>
+          </ul>
+          <p>Doğru UPS, sizi sadece kesintiden değil, yüksek servis maliyetlerinden de kurtarır. Hata yapmamak ve cihazlarınıza en uygun modeli belirlemek için:</p>
+          <a href="https://wa.me/905058525331?text=UPS%20se%C3%A7imi%20konusunda%20uzman%20deste%C4%9Fi%20almak%20istiyorum." target="_blank" class="wa-inline">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L0 24l6.314-1.506A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.865 9.865 0 01-5.022-1.37l-.36-.214-3.742.892.946-3.648-.235-.374A9.861 9.861 0 012.118 12C2.118 6.53 6.53 2.118 12 2.118c5.47 0 9.882 4.412 9.882 9.882 0 5.47-4.412 9.882-9.882 9.882z"/></svg>
+            Doğru Seçimi Uzmanına Sorun (WhatsApp)
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -555,6 +699,66 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
   </div>
 </div>
 
+<!-- İLETİŞİM BÖLÜMÜ -->
+<div class="contact-section">
+  <div class="contact-inner">
+    <div>
+      <div class="contact-label">Ücretsiz Danışmanlık</div>
+      <h2 class="contact-title">Ücretsiz Kapasite Tespiti ve Proje Teklifi İçin Uzman Mühendislerimizle Görüşün</h2>
+      <p class="contact-desc">Hangi UPS modelinin sisteminize uygun olduğunu belirlemek, güç hesabı yapmak ve anahtar teslim projeler için teknik ekibimiz her zaman yanınızda. İlk görüşme tamamen ücretsizdir.</p>
+      <div class="contact-channels">
+        <a class="contact-ch" href="https://wa.me/905058525331?text=Merhaba%2C%20UPS%20projesi%20i%C3%A7in%20bilgi%20almak%20istiyorum." target="_blank">
+          <div class="contact-ch-icon" style="background:#25d366;">📱</div>
+          <div><div class="contact-ch-label">WHATSAPP (Hızlı Yanıt)</div><div class="contact-ch-val">+90 505 852 53 31</div></div>
+        </a>
+        <a class="contact-ch" href="tel:+905058525331">
+          <div class="contact-ch-icon" style="background:#3b82f6;">📞</div>
+          <div><div class="contact-ch-label">TELEFON</div><div class="contact-ch-val">+90 505 852 53 31</div></div>
+        </a>
+        <a class="contact-ch" href="mailto:info@aytechteknoloji.com.tr">
+          <div class="contact-ch-icon" style="background:var(--accent);">✉️</div>
+          <div><div class="contact-ch-label">E-POSTA</div><div class="contact-ch-val">info@aytechteknoloji.com.tr</div></div>
+        </a>
+        <div class="contact-ch" style="cursor:default;">
+          <div class="contact-ch-icon" style="background:#6b6356;">📍</div>
+          <div><div class="contact-ch-label">ADRES</div><div class="contact-ch-val">Feyzullah Serap Cd. 10/A · 34843 Maltepe / İstanbul</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Proje Teklifi Alın</div>
+      <div class="form-sub">Bilgilerinizi bırakın, uzmanımız sizi arasın.</div>
+      <div class="form-group">
+        <label class="form-label">Ad Soyad *</label>
+        <input type="text" class="form-input" placeholder="Adınız ve soyadınız" id="f-name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Telefon *</label>
+        <input type="tel" class="form-input" placeholder="05XX XXX XX XX" id="f-phone">
+      </div>
+      <div class="form-group">
+        <label class="form-label">İhtiyaç Duyulan Güç / Kullanım Amacı</label>
+        <select class="form-select" id="f-need">
+          <option value="">Seçin...</option>
+          <option>Ev / Küçük Ofis (500VA – 1kVA)</option>
+          <option>Bilgisayar & Gaming (1kVA – 2kVA)</option>
+          <option>Kombi / Isıtma Sistemi</option>
+          <option>Asansör UPS (Tunçmatik Lift)</option>
+          <option>Güvenlik / CCTV Sistemi</option>
+          <option>Sunucu / Kurumsal (2kVA+)</option>
+          <option>Bilmiyorum, hesaplama lazım</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notunuz (İsteğe Bağlı)</label>
+        <input type="text" class="form-input" placeholder="Kısa bir bilgi..." id="f-note">
+      </div>
+      <button class="form-btn" onclick="submitForm()">📨 Teklif Talebini Gönder</button>
+      <div id="form-msg" style="margin-top:12px;font-size:13px;color:#4ade80;display:none;text-align:center;font-family:'DM Mono',monospace;"></div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -571,14 +775,14 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       </div>
       <div>
         <div class="footer-col-title">Araçlar</div>
-        <ul class="footer-links"><li><span onclick="go('calc')">UPS Hesaplayıcı</span></li><li><span onclick="go('glossary')">Teknik Sözlük</span></li><li><span onclick="go('blog')">Blog</span></li><li><a href="mailto:info@upsrehberi.com">İletişim</a></li></ul>
+        <ul class="footer-links"><li><span onclick="go('calc')">UPS Hesaplayıcı</span></li><li><span onclick="go('glossary')">Teknik Sözlük</span></li><li><span onclick="go('blog')">Blog</span></li><li><a href="/cdn-cgi/l/email-protection#dfb6b1b9b09faaafacadbab7bdbaadb6f1bcb0b2">İletişim</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom"><span>© 2026 upsrehberi.com · upsrehberi.com.tr — Tüm hakları saklıdır.</span><span>Türkiye'nin bağımsız UPS rehberi</span></div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── NAVIGATION ──
 const PGS=['home','guide','types','blog','glossary','calc'];
 function go(id){
@@ -591,6 +795,25 @@ function go(id){
     if(nv)nv.classList.toggle('active',p===id);
   });
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── FORM SUBMIT → WhatsApp ──
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const need=document.getElementById('f-need').value;
+  const note=document.getElementById('f-note').value.trim();
+  if(!name||!phone){
+    document.getElementById('form-msg').style.color='#ef4444';
+    document.getElementById('form-msg').textContent='⚠️ Ad ve telefon alanları zorunludur.';
+    document.getElementById('form-msg').style.display='block';
+    return;
+  }
+  const msg=`Merhaba, proje teklifi almak istiyorum.%0AAd Soyad: ${encodeURIComponent(name)}%0ATelefon: ${encodeURIComponent(phone)}%0Aİhtiyaç: ${encodeURIComponent(need||'Belirtilmedi')}%0ANot: ${encodeURIComponent(note||'—')}`;
+  document.getElementById('form-msg').style.color='#4ade80';
+  document.getElementById('form-msg').textContent='✅ WhatsApp açılıyor...';
+  document.getElementById('form-msg').style.display='block';
+  setTimeout(()=>{ window.open('https://wa.me/905058525331?text='+msg,'_blank'); },600);
 }
 
 // ── CALCULATOR ──
@@ -710,13 +933,4 @@ function render(){
           <span style="font-size:9px;color:#334155;">${lp}%</span>
         </div>
         <div class="btrack"><div class="bfill" style="width:${lp}%;background:${bc};"></div></div>
-        <div class="lpct">${va} / ${m.va} VA</div>
-      </div>
-      <div><div class="bc">${m.b}×${AH}Ah</div><div class="bs">${m.b} adet akü</div></div>
-    </div>`;
-  }).join('');
-}
-render();
-</script>
-</body>
-</html>
+        <div class="lpct">${va}
