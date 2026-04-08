@@ -902,40 +902,47 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
   </div>
 </footer>
 
-<script data-cfasync="false">
+
+<script>
 var PGS = ['home','guide','types','blog','glossary','calc'];
 
+// ── SAYFA GEÇİŞ ──
 function go(id) {
   PGS.forEach(function(p) {
     var pg = document.getElementById('p-' + p);
     var tb = document.getElementById('t-' + p);
     var nv = document.getElementById('n-' + p);
-    if (pg) pg.classList.toggle('active', p === id);
+    if (pg) { pg.classList.toggle('active', p === id); pg.style.display = (p === id) ? 'block' : 'none'; }
     if (tb) tb.classList.toggle('active', p === id);
     if (nv) nv.classList.toggle('active', p === id);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// ── İLETİŞİM FORMU ──
 function submitForm() {
-  var name = document.getElementById('f-name').value.trim();
+  var name  = document.getElementById('f-name').value.trim();
   var phone = document.getElementById('f-phone').value.trim();
-  var need = document.getElementById('f-need').value;
-  var note = document.getElementById('f-note').value.trim();
-  var msg_el = document.getElementById('form-msg');
+  var need  = document.getElementById('f-need').value;
+  var note  = document.getElementById('f-note').value.trim();
+  var el    = document.getElementById('form-msg');
   if (!name || !phone) {
-    msg_el.style.color = '#ef4444';
-    msg_el.textContent = '⚠️ Ad ve telefon alanları zorunludur.';
-    msg_el.style.display = 'block';
+    el.style.color = '#ef4444';
+    el.textContent = '⚠️ Ad ve telefon alanları zorunludur.';
+    el.style.display = 'block';
     return;
   }
-  var msg = 'Merhaba, proje teklifi almak istiyorum.%0AAd Soyad: ' + encodeURIComponent(name) + '%0ATelefon: ' + encodeURIComponent(phone) + '%0Aihtiyac: ' + encodeURIComponent(need || 'Belirtilmedi') + '%0ANot: ' + encodeURIComponent(note || '-');
-  msg_el.style.color = '#4ade80';
-  msg_el.textContent = 'WhatsApp aciliyor...';
-  msg_el.style.display = 'block';
-  setTimeout(function() { window.open('https://wa.me/905058525331?text=' + msg, '_blank'); }, 600);
+  var msg = 'Merhaba%2C+proje+teklifi+almak+istiyorum.%0AAd+Soyad%3A+' + encodeURIComponent(name)
+          + '%0ATelefon%3A+' + encodeURIComponent(phone)
+          + '%0AİhtiyaÃ§%3A+' + encodeURIComponent(need || 'Belirtilmedi')
+          + '%0ANot%3A+' + encodeURIComponent(note || '-');
+  el.style.color = '#4ade80';
+  el.textContent = '✅ WhatsApp açılıyor...';
+  el.style.display = 'block';
+  setTimeout(function() { window.open('https://wa.me/905058525331?text=' + msg, '_blank'); }, 500);
 }
 
+// ── HESAPLAYICI ──
 var MODELS = [
   {n:'650 VA', va:650,   b:1 },
   {n:'700 VA', va:700,   b:1 },
@@ -946,124 +953,295 @@ var MODELS = [
   {n:'6 kVA',  va:6000,  b:16},
   {n:'10 kVA', va:10000, b:20}
 ];
-var PF=0.7, EFF=0.85, VOLT=12, EQ={}, AH=9;
+var PF=0.7, EFF=0.85, V12=12, EQ={}, AH=9;
 
 function setAh(a) {
   AH = a;
   var b7=document.getElementById('ah7'), b9=document.getElementById('ah9');
-  if(b7) b7.classList.toggle('on',a===7);
-  if(b9) b9.classList.toggle('on',a===9);
+  if(b7) b7.classList.toggle('on', a===7);
+  if(b9) b9.classList.toggle('on', a===9);
   var rth=document.getElementById('rth');
-  if(rth) rth.textContent='Aku Suresi ('+a+'Ah)';
+  if(rth) rth.textContent = 'Akü Süresi (' + a + 'Ah)';
   render();
 }
 
-function tog(id,w,ic,nm) {
-  var btn=document.querySelector('[data-eq="'+id+'"]');
-  if(EQ[id]){ delete EQ[id]; if(btn) btn.classList.remove('sel'); }
-  else { EQ[id]={w:w,ic:ic,nm:nm,q:1}; if(btn) btn.classList.add('sel'); }
+function tog(id, w, ic, nm) {
+  var btn = document.querySelector('[data-eq="'+id+'"]');
+  if (EQ[id]) { delete EQ[id]; if(btn) btn.classList.remove('sel'); }
+  else         { EQ[id]={w:w,ic:ic,nm:nm,q:1}; if(btn) btn.classList.add('sel'); }
   renderChips(); render();
 }
 
-function chgQ(id,d) {
-  if(!EQ[id]) return;
-  EQ[id].q+=d;
-  if(EQ[id].q<=0){ var btn=document.querySelector('[data-eq="'+id+'"]'); delete EQ[id]; if(btn) btn.classList.remove('sel'); }
+function chgQ(id, d) {
+  if (!EQ[id]) return;
+  EQ[id].q += d;
+  if (EQ[id].q <= 0) {
+    var btn = document.querySelector('[data-eq="'+id+'"]');
+    delete EQ[id];
+    if(btn) btn.classList.remove('sel');
+  }
   renderChips(); render();
 }
 
 function totals() {
-  var w=0,i=0;
-  Object.keys(EQ).forEach(function(k){ w+=EQ[k].w*EQ[k].q; i+=EQ[k].q; });
-  return {w:w, va:Math.round(w/PF), i:i};
+  var w=0, i=0;
+  Object.keys(EQ).forEach(function(k){ w += EQ[k].w * EQ[k].q; i += EQ[k].q; });
+  return { w:w, va:Math.round(w/PF), i:i };
 }
 
-function calcMins(tw,m){ return tw<=0?Infinity:Math.round((m.b*VOLT*AH*EFF/tw)*60); }
-function mLabel(m){ if(m===Infinity)return '-'; if(m<1)return '<1 dk'; if(m>=60)return Math.floor(m/60)+'s '+(m%60)+'dk'; return m+' dk'; }
-function getSt(mva,tva){ if(tva===0)return'idle'; var r=tva/mva; if(r>1)return'over'; if(r>0.8)return'warn'; if(r>0.4)return'good'; return'low'; }
-var SM={idle:{l:'-',c:'#334155'},over:{l:'ASIM',c:'#ef4444'},warn:{l:'Yuksek Yuk',c:'#f97316'},good:{l:'Ideal',c:'#22c55e'},low:{l:'Dusuk Yuk',c:'#3b82f6'}};
+function calcMins(tw, m) {
+  if (tw<=0) return Infinity;
+  return Math.round((m.b * V12 * AH * EFF / tw) * 60);
+}
+
+function mLabel(m) {
+  if (m===Infinity) return '—';
+  if (m<1) return '<1 dk';
+  if (m>=60) return Math.floor(m/60)+'s '+(m%60)+'dk';
+  return m+' dk';
+}
+
+function getSt(mva, tva) {
+  if (tva===0) return 'idle';
+  var r = tva/mva;
+  if (r>1)   return 'over';
+  if (r>0.8) return 'warn';
+  if (r>0.4) return 'good';
+  return 'low';
+}
+var SM = {
+  idle:{l:'—',c:'#334155'},
+  over:{l:'AŞIM',c:'#ef4444'},
+  warn:{l:'Yüksek Yük',c:'#f97316'},
+  good:{l:'İdeal ★',c:'#22c55e'},
+  low: {l:'Düşük Yük',c:'#3b82f6'}
+};
 
 function renderChips() {
-  var a=document.getElementById('chips'); if(!a)return;
-  var ks=Object.keys(EQ);
-  if(!ks.length){a.innerHTML='<span style="font-size:11px;color:#334155;">Ekipman secin...</span>';return;}
-  a.innerHTML=ks.map(function(id){var e=EQ[id];return'<div class="chip"><span>'+e.ic+'</span><span>'+e.nm+'</span>'+(e.q>1?'<span class="chip-qty">x'+e.q+'</span>':'')+'<button class="chip-btn" data-qm="'+id+'">-</button><button class="chip-btn" data-qp="'+id+'">+</button><span class="chip-w">'+(e.w*e.q)+'W</span></div>';}).join('');
+  var a = document.getElementById('chips');
+  if (!a) return;
+  var ks = Object.keys(EQ);
+  if (!ks.length) { a.innerHTML='<span style="font-size:11px;color:#334155;">Ekipman seçin...</span>'; return; }
+  a.innerHTML = ks.map(function(id){
+    var e = EQ[id];
+    return '<div class="chip">'
+      + '<span>'+e.ic+'</span>'
+      + '<span>'+e.nm+'</span>'
+      + (e.q>1 ? '<span class="chip-qty">×'+e.q+'</span>' : '')
+      + '<button class="chip-btn" data-qm="'+id+'">−</button>'
+      + '<button class="chip-btn" data-qp="'+id+'">+</button>'
+      + '<span class="chip-w">'+(e.w*e.q)+'W</span>'
+      + '</div>';
+  }).join('');
 }
 
-function buildCards(va,w) {
-  var hasAs=EQ[18]||EQ[19]||EQ[20];
-  var cards=[];
-  if(hasAs){
-    cards=[{name:'Tuncmatik Lift 1500VA',badge:'Asansor',bc:'#a855f7',desc:'Line-Interactive - Saf Sinus - 2x9Ah - ARD Destegi',url:'https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/',wa:'Merhaba+Aytech+ekibi,+asansor+icin+'+va+'+VA+yuk+icin+Tuncmatik+Lift+1500VA+fiyat+teklifi+almak+istiyorum.',hi:true}];
-  } else if(va<=850){
-    cards=[{name:'Tuncmatik Lite II 850VA',badge:'Onerilen',bc:'#22c55e',desc:'Line-Interactive - Saf Sinus - 2x7Ah - Ev ve kucuk ofis icin',url:'https://www.aytechelektromarket.com/urun/tuncmatik-lite-ii-850va-line-interactive-ups/',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+yuk+icin+Tuncmatik+Lite+II+850VA+fiyat+teklifi+almak+istiyorum.',hi:true}];
-  } else if(va<=1500){
-    cards=[
-      {name:'Tuncmatik Lite II 1000VA',badge:'Onerilen',bc:'#22c55e',desc:'Line-Interactive - Saf Sinus - 2x7Ah - Kombi, PC ve ofis icin',url:'https://www.aytechelektromarket.com/urun/tuncmatik-lite-ii-1000va-line-interactive-ups-2x7ah/',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+yuk+icin+Tuncmatik+Lite+II+1000VA+fiyat+teklifi+almak+istiyorum.',hi:true},
-      {name:'APC Easy-UPS 1600VA',badge:'Alternatif',bc:'#3b82f6',desc:'Line-Interactive - AVR - Kurumsal guvenilirlik',url:'https://www.aytechelektromarket.com',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+yuk+icin+APC+Easy-UPS+1600VA+fiyat+teklifi+almak+istiyorum.',hi:false}
-    ];
-  } else if(va<=3000){
-    cards=[
-      {name:'Tuncmatik Digitech Pro 2000VA',badge:'Onerilen',bc:'#22c55e',desc:'Line-Interactive - Saf Sinus - 4x9Ah - Gaming ve guclu sistemler',url:'https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+yuk+icin+2kVA+UPS+fiyat+teklifi+almak+istiyorum.',hi:true},
-      {name:'Gaming UPS Kategorisi',badge:'Gaming',bc:'#6366f1',desc:'Yuksek guc faktorlu - Saf Sinus - RTX 4070+ sistemler icin',url:'https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+gaming+kurulum+icin+fiyat+teklifi+almak+istiyorum.',hi:false}
-    ];
-  } else {
-    cards=[{name:'Size Ozel Proje Teklifi',badge:'Kurumsal',bc:'#f59e0b',desc:va+' VA ve uzeri yukler icin uzman ekibimiz size ozel cozum hazirlasin.',url:'#iletisim',wa:'Merhaba+Aytech+ekibi,+'+va+'+VA+yuk+icin+ozel+teklif+almak+istiyorum.',hi:true}];
+// ── ÜRÜN KARTI MANTIĞI (VA basamak sistemi) ──
+var PRODUCT_RULES = [
+  {
+    label: 'Asansör için uzman önerimiz',
+    sub:   'Güvenli iniş (ARD) + saf sinüs çıkışlı model',
+    check: function(va,w,eq){ return eq[18]||eq[19]||eq[20]; },
+    cards: function(va){return [{
+      name:'Tunçmatik Lift 1500VA', badge:'🛗 Asansör', bc:'#a855f7',
+      desc:'Line-Interactive · Saf Sinüs · 2×9Ah · ARD Desteği',
+      url:'https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/',
+      wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+%C3%96nerdi%C4%9Finiz+Tun%C3%A7matik+Lift+1500VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:true
+    }];}
+  },
+  {
+    label: 'En uygun model — 0–850 VA',
+    sub:   'Ev ve küçük ofis için uzman önerimiz',
+    check: function(va,w,eq){ return va<=850; },
+    cards: function(va){return [{
+      name:'Tunçmatik Lite II 850VA', badge:'⚡ Önerilen', bc:'#22c55e',
+      desc:'Line-Interactive · Saf Sinüs · 2×7Ah · Kompakt, sessiz tasarım',
+      url:'https://www.aytechelektromarket.com/urun/tuncmatik-lite-ii-850-va-line-interactive-ups/',
+      wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+%C3%96nerdi%C4%9Finiz+Tun%C3%A7matik+Lite+II+850VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:true
+    }];}
+  },
+  {
+    label: 'En uygun modeller — 851–1500 VA',
+    sub:   'PC, kombi ve ofis sistemleri için iki seçenek',
+    check: function(va,w,eq){ return va<=1500; },
+    cards: function(va){return [
+      {name:'Tunçmatik Lite II 1000VA', badge:'⚡ Önerilen', bc:'#22c55e',
+       desc:'Line-Interactive · Saf Sinüs · 2×7Ah · Kombi, PC ve ofis için',
+       url:'https://www.aytechelektromarket.com/urun/tuncmatik-lite-ii-1000va-line-interactive-ups-2x7ah/',
+       wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+%C3%96nerdi%C4%9Finiz+Tun%C3%A7matik+Lite+II+1000VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:true},
+      {name:'Tunçmatik Digitech Pro 1500VA', badge:'🔵 Alternatif', bc:'#3b82f6',
+       desc:'Line-Interactive · AVR · 2×9Ah · Daha uzun akü süresi',
+       url:'https://www.aytechelektromarket.com/urun/tuncmatik-digitech-pro-1500-va-line-interactive-ups/',
+       wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+Tun%C3%A7matik+Digitech+Pro+1500VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:false}
+    ];}
+  },
+  {
+    label: 'Güçlü sistemler — 1501–3000 VA',
+    sub:   'Gaming ve profesyonel kurulumlar için',
+    check: function(va,w,eq){ return va<=3000; },
+    cards: function(va){return [
+      {name:'Tunçmatik Digitech Pro 2000VA', badge:'⚡ Önerilen', bc:'#22c55e',
+       desc:'Line-Interactive · Saf Sinüs · 4×9Ah · Gaming ve güçlü sistemler',
+       url:'https://www.aytechelektromarket.com/urun/tuncmatik-digitech-pro-2000-va-line-interactive-ups/',
+       wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+Tun%C3%A7matik+Digitech+Pro+2000VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:true},
+      {name:'Gaming & Profesyonel Serisi', badge:'🎮 Gaming', bc:'#6366f1',
+       desc:'Yüksek güç faktörlü · Saf Sinüs · RTX 4070+ sistemler için',
+       url:'https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/',
+       wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+gaming+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+Gaming+UPS+serisi+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F', hi:false}
+    ];}
+  },
+  {
+    label: 'Yüksek güç — 3000 VA+',
+    sub:   'Bu kapasite için size özel proje teklifi hazırlayalım',
+    check: function(va,w,eq){ return true; },
+    cards: function(va){return [{
+      name:'Yüksek Güç Proje Çözümleri', badge:'📋 Kurumsal', bc:'#f59e0b',
+      desc:va+' VA ve üzeri yükler için standart modeller yetersiz kalabilir. Uzman ekibimiz size özel çözüm tasarlasın.',
+      url:'#iletisim',
+      wa:'Merhaba+Aytech+ekibi%2C+UPS+Rehberi'nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+Bu+kapasite+i%C3%A7in+%C3%B6zel+teklif+almak+istiyorum.', hi:true
+    }];}
   }
-  return cards;
+];
+
+function getRule(va, w) {
+  for (var i=0; i<PRODUCT_RULES.length; i++) {
+    if (PRODUCT_RULES[i].check(va, w, EQ)) return PRODUCT_RULES[i];
+  }
+  return PRODUCT_RULES[PRODUCT_RULES.length-1];
+}
+
+function cardHTML(p) {
+  return '<div class="prod-card' + (p.hi ? ' highlight' : '') + '">'
+    + '<span class="prod-card-badge" style="background:'+p.bc+'22;color:'+p.bc+';">'+p.badge+'</span>'
+    + '<div class="prod-card-name">'+p.name+'</div>'
+    + '<div class="prod-card-desc">'+p.desc+'</div>'
+    + '<div class="prod-card-cta">'
+    + '<a class="prod-card-buy" href="'+p.url+'" target="_blank">🛒 Hemen Aytech Elektromarket'ten İndirimli Satın Al</a>'
+    + '<a class="prod-card-wa" href="https://wa.me/905058525331?text='+p.wa+'" target="_blank">'
+    + '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L0 24l6.314-1.506A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.865 9.865 0 01-5.022-1.37l-.36-.214-3.742.892.946-3.648-.235-.374A9.861 9.861 0 012.118 12C2.118 6.53 6.53 2.118 12 2.118c5.47 0 9.882 4.412 9.882 9.882 0 5.47-4.412 9.882-9.882 9.882z"/></svg>'
+    + ' Bu Hesabı Uzmanımıza Gönder &amp; Fiyat Al'
+    + '</a>'
+    + '</div></div>';
 }
 
 function render() {
-  var t=totals(); var w=t.w,va=t.va,items=t.i;
-  var sw=document.getElementById('sw'),sv=document.getElementById('sv'),si=document.getElementById('si');
-  if(sw) sw.textContent=w+' W';
-  if(sv) sv.textContent=va+' VA';
-  if(si) si.textContent=items;
-  var rows=document.getElementById('rrows'),nm=document.getElementById('nomsg'),cb=document.getElementById('ctabar'),rw=document.getElementById('prod-rec-wrap');
-  if(!rows) return;
-  if(w===0){rows.innerHTML='';if(nm)nm.style.display='block';if(cb)cb.style.display='none';if(rw)rw.style.display='none';return;}
-  if(nm)nm.style.display='none';if(cb)cb.style.display='flex';
-  var best=MODELS.find(function(m){return getSt(m.va,va)==='good';})||MODELS.find(function(m){return va<=m.va;});
-  if(best){
-    var cm=document.getElementById('ctamain'),cs=document.getElementById('ctasub');
-    if(cm) cm.textContent='Onerilen model: '+best.n;
-    if(cs) cs.textContent='Hesaplanan '+va+' VA yuke uygun modelleri inceleyin.';
-    var btn=document.getElementById('ctabtn'),wabtn=document.getElementById('ctawa');
-    var hasAs=EQ[18]||EQ[19]||EQ[20];
-    var shopUrl,waMsg;
-    if(hasAs){shopUrl='https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/';if(btn)btn.innerHTML='Asansor UPS Incele';waMsg='Merhaba+Aytech+ekibi,+'+va+'+VA+asansor+icin+Tuncmatik+Lift+fiyat+teklifi+almak+istiyorum.';}
-    else if(w>450){shopUrl='https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/';if(btn)btn.innerHTML='Gaming UPS Incele';waMsg='Merhaba+Aytech+ekibi,+'+va+'+VA+gaming+icin+'+encodeURIComponent(best.n)+'+fiyat+teklifi+almak+istiyorum.';}
-    else{shopUrl='https://www.aytechelektromarket.com';if(btn)btn.innerHTML='Modelleri Incele';waMsg='Merhaba+Aytech+ekibi,+'+va+'+VA+icin+'+encodeURIComponent(best.n)+'+fiyat+teklifi+almak+istiyorum.';}
-    if(btn) btn.href=shopUrl;
-    if(wabtn) wabtn.href='https://wa.me/905058525331?text='+waMsg;
-    if(rw){
-      rw.style.display='block';
-      var rt=document.getElementById('prod-rec-title'),rs=document.getElementById('prod-rec-sub'),rc=document.getElementById('prod-rec-cards');
-      var cards=buildCards(va,w);
-      if(rt) rt.textContent=cards.length>1?'Size uygun modeller':'En uygun model';
-      if(rs) rs.textContent=va+' VA yuk icin uzman onerimiz';
-      if(rc) rc.innerHTML=cards.map(function(p){return'<div class="prod-card'+(p.hi?' highlight':'')+'"><span class="prod-card-badge" style="background:'+p.bc+'22;color:'+p.bc+';">'+p.badge+'</span><div class="prod-card-name">'+p.name+'</div><div class="prod-card-desc">'+p.desc+'</div><div class="prod-card-cta"><a class="prod-card-buy" href="'+p.url+'" target="_blank">Hemen Aytech Elektromarket'ten Satin Al</a><a class="prod-card-wa" href="https://wa.me/905058525331?text='+p.wa+'" target="_blank">Bu Sonucu Uzmanımıza Gonder &amp; Fiyat Al</a></div></div>';}).join('');
-    }
+  var t = totals();
+  var w = t.w, va = t.va, items = t.i;
+  var sw=document.getElementById('sw'), sv=document.getElementById('sv'), si=document.getElementById('si');
+  if(sw) sw.textContent = w + ' W';
+  if(sv) sv.textContent = va + ' VA';
+  if(si) si.textContent = items;
+
+  var rows = document.getElementById('rrows');
+  var nm   = document.getElementById('nomsg');
+  var cb   = document.getElementById('ctabar');
+  var rw   = document.getElementById('prod-rec-wrap');
+  if (!rows) return;
+
+  if (w===0) {
+    rows.innerHTML='';
+    if(nm) nm.style.display='block';
+    if(cb) cb.style.display='none';
+    if(rw) rw.style.display='none';
+    return;
   }
-  rows.innerHTML=MODELS.map(function(m){var st=getSt(m.va,va),smd=SM[st],isRec=(m===best),isOv=(st==='over'),mn=isOv?null:calcMins(w,m),lp=Math.min(Math.round((va/m.va)*100),100),bc=isOv?'#ef4444':(st==='warn'?'#f97316':'#22c55e');return'<div class="r-row'+(isRec?' rec':'')+(isOv?' over':'')+'"><div><div class="mn" style="color:'+(isRec?'#22c55e':isOv?'#ef4444':'#f1f5f9')+';">'+m.n+'</div>'+(isRec?'<div class="mr" style="color:#22c55e;">ONERILEN</div>':'')+'</div><div>'+(isOv?'<div style="font-size:12px;color:#ef4444;font-weight:700;">-- Yetersiz --</div>':'<div class="rv">'+mLabel(mn)+'</div><div class="rs">'+m.b+'x12V'+AH+'Ah - '+Math.round(m.b*VOLT*AH*EFF)+'Wh</div>')+'</div><div style="padding-right:10px;"><div style="display:flex;justify-content:space-between;"><span class="pill" style="background:'+smd.c+'22;color:'+smd.c+';">'+smd.l+'</span><span style="font-size:9px;color:#334155;">'+lp+'%</span></div><div class="btrack"><div class="bfill" style="width:'+lp+'%;background:'+bc+';"></div></div><div class="lpct">'+va+' / '+m.va+' VA</div></div><div><div class="bc">'+m.b+'x'+AH+'Ah</div><div class="bs">'+m.b+' adet</div></div></div>';}).join('');
+  if(nm) nm.style.display='none';
+  if(cb) cb.style.display='flex';
+
+  var best = MODELS.find(function(m){ return getSt(m.va,va)==='good'; })
+          || MODELS.find(function(m){ return va<=m.va; });
+
+  // CTA bar güncelle
+  if (best) {
+    var cm=document.getElementById('ctamain'), cs=document.getElementById('ctasub');
+    if(cm) cm.textContent = 'Önerilen kapasite: ' + best.n;
+    if(cs) cs.textContent = 'Hesaplanan ' + va + ' VA yüke uygun modelleri stoktan inceleyin.';
+    var btn   = document.getElementById('ctabtn');
+    var wabtn = document.getElementById('ctawa');
+    var hasAs = EQ[18]||EQ[19]||EQ[20];
+    var shopUrl, waMsg;
+    if(hasAs){
+      shopUrl='https://www.aytechelektromarket.com/urun/tuncmatik-lift-1500-va-line-interactive-ups-2x9ah/';
+      waMsg='Merhaba+Aytech+ekibi%2C+UPS+Rehberi%27nde+'+va+'+VA+asans%C3%B6r+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+Tun%C3%A7matik+Lift+1500VA+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F';
+      if(btn) btn.innerHTML='🛗 Asansör UPS İncele';
+    } else if(w>450){
+      shopUrl='https://www.aytechelektromarket.com/urun-kategori/kesintisiz-guc-kaynagi-ups/gaming-ups/';
+      waMsg='Merhaba+Aytech+ekibi%2C+UPS+Rehberi%27nde+'+va+'+VA+gaming+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+'+encodeURIComponent(best.n)+'+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F';
+      if(btn) btn.innerHTML='🎮 Gaming UPS İncele';
+    } else {
+      shopUrl='https://www.aytechelektromarket.com';
+      waMsg='Merhaba+Aytech+ekibi%2C+UPS+Rehberi%27nde+'+va+'+VA+y%C3%BCk%C3%BCm+%C3%A7%C4%B1kt%C4%B1.+'+encodeURIComponent(best.n)+'+i%C3%A7in+fiyat+teklifi+alabilir+miyim%3F';
+      if(btn) btn.innerHTML='🛒 Modelleri İncele';
+    }
+    if(btn)   btn.href   = shopUrl;
+    if(wabtn) wabtn.href = 'https://wa.me/905058525331?text=' + waMsg;
+  }
+
+  // Ürün kartı göster
+  if (rw) {
+    var rule  = getRule(va, w);
+    var cards = rule.cards(va);
+    var rt=document.getElementById('prod-rec-title'), rs=document.getElementById('prod-rec-sub'), rc=document.getElementById('prod-rec-cards');
+    rw.style.display='block';
+    if(rt) rt.textContent = rule.label;
+    if(rs) rs.textContent = rule.sub;
+    if(rc) rc.innerHTML   = cards.map(cardHTML).join('');
+  }
+
+  // Akü süresi tablosu
+  rows.innerHTML = MODELS.map(function(m){
+    var st   = getSt(m.va, va);
+    var smd  = SM[st];
+    var isRec = (m===best);
+    var isOv  = (st==='over');
+    var mn = isOv ? null : calcMins(w,m);
+    var lp = Math.min(Math.round((va/m.va)*100), 100);
+    var bc = isOv ? '#ef4444' : (st==='warn' ? '#f97316' : '#22c55e');
+    return '<div class="r-row' + (isRec?' rec':'') + (isOv?' over':'') + '">'
+      + '<div><div class="mn" style="color:'+(isRec?'#22c55e':isOv?'#ef4444':'#f1f5f9')+';">'+m.n+'</div>'
+      + (isRec ? '<div class="mr" style="color:#22c55e;">★ ÖNERİLEN</div>' : '')
+      + '</div>'
+      + '<div>' + (isOv
+          ? '<div style="font-size:12px;color:#ef4444;font-weight:700;">— Yetersiz —</div>'
+          : '<div class="rv">'+mLabel(mn)+'</div><div class="rs">'+m.b+'×12V'+AH+'Ah · '+Math.round(m.b*V12*AH*EFF)+'Wh</div>')
+      + '</div>'
+      + '<div style="padding-right:10px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;">'
+      + '<span class="pill" style="background:'+smd.c+'22;color:'+smd.c+';">'+smd.l+'</span>'
+      + '<span style="font-size:9px;color:#334155;">'+lp+'%</span></div>'
+      + '<div class="btrack"><div class="bfill" style="width:'+lp+'%;background:'+bc+';"></div></div>'
+      + '<div class="lpct">'+va+' / '+m.va+' VA</div>'
+      + '</div>'
+      + '<div><div class="bc">'+m.b+'×'+AH+'Ah</div><div class="bs">'+m.b+' adet</div></div>'
+      + '</div>';
+  }).join('');
 }
 
+// ── GLOBAL CLICK HANDLER ──
 document.addEventListener('DOMContentLoaded', function() {
-  document.body.addEventListener('click', function(e) {
-    var pg=e.target.closest('[data-page]');
-    if(pg){e.preventDefault();go(pg.getAttribute('data-page'));return;}
-    var eq=e.target.closest('[data-eq]');
-    if(eq){tog(parseInt(eq.getAttribute('data-eq')),parseFloat(eq.getAttribute('data-w')),eq.getAttribute('data-ic'),eq.getAttribute('data-nm'));return;}
-    var qp=e.target.closest('[data-qp]');
-    if(qp){chgQ(parseInt(qp.getAttribute('data-qp')),1);return;}
-    var qm=e.target.closest('[data-qm]');
-    if(qm){chgQ(parseInt(qm.getAttribute('data-qm')),-1);return;}
-    var ah=e.target.closest('[data-ah]');
-    if(ah){setAh(parseInt(ah.getAttribute('data-ah')));return;}
-    if(e.target.id==='form-submit-btn'){submitForm();return;}
-    if(e.target.id==='topbar-contact'){e.preventDefault();var el=document.getElementById('iletisim');if(el)el.scrollIntoView({behavior:'smooth'});return;}
+  // Başlangıçta doğru sayfaları göster
+  PGS.forEach(function(p){
+    var pg = document.getElementById('p-'+p);
+    if(pg) pg.style.display = (p==='home') ? 'block' : 'none';
   });
-  render();
+
+  document.body.addEventListener('click', function(e) {
+    // Sayfa navigasyonu
+    var pg = e.target.closest('[data-page]');
+    if (pg) { e.preventDefault(); go(pg.getAttribute('data-page')); return; }
+    // Ekipman toggle
+    var eq = e.target.closest('[data-eq]');
+    if (eq) { tog(parseInt(eq.getAttribute('data-eq')), parseFloat(eq.getAttribute('data-w')), eq.getAttribute('data-ic'), eq.getAttribute('data-nm')); return; }
+    // Miktar artır
+    var qp = e.target.closest('[data-qp]');
+    if (qp) { chgQ(parseInt(qp.getAttribute('data-qp')), 1); return; }
+    // Miktar azalt
+    var qm = e.target.closest('[data-qm]');
+    if (qm) { chgQ(parseInt(qm.getAttribute('data-qm')), -1); return; }
+    // Akü seçimi
+    var ah = e.target.closest('[data-ah]');
+    if (ah) { setAh(parseInt(ah.getAttribute('data-ah'))); return; }
+  });
 });
 </script>
+</body>
 </html>
