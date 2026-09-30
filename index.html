@@ -152,72 +152,73 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 /* TYPES */
 .type-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px;}
 /* ──────────────────── HESAPLAYICI ──────────────────── */
-#calc-wrap{background:#0f172a;font-family:'DM Mono',monospace;color:#e2e8f0;}
-.c-topbar{background:#0a0f1a;border-bottom:1px solid #1e293b;padding:16px 24px;display:flex;align-items:center;gap:12px;}
+#calc-wrap{background:var(--white);font-family:'DM Mono',monospace;color:var(--ink);border:1px solid var(--border);}
+.c-topbar{background:var(--paper2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:12px;}
 .c-logo{width:36px;height:36px;background:linear-gradient(135deg,#3b82f6,#6366f1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.c-title{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:#f1f5f9;}
-.c-sub{font-size:10px;color:#475569;margin-top:2px;letter-spacing:.04em;}
-.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;position:relative;margin-left:auto;flex-shrink:0;}
-.live-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:#22c55e;animation:pulse 1.5s ease-out infinite;}
+.c-title{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--ink);}
+.c-sub{font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:.04em;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#16a34a;position:relative;margin-left:auto;flex-shrink:0;}
+.live-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:#16a34a;animation:pulse 1.5s ease-out infinite;}
 @keyframes pulse{0%{transform:scale(1);opacity:.4;}100%{transform:scale(1.9);opacity:0;}}
-.live-lbl{font-size:10px;color:#475569;letter-spacing:.06em;}
-.sum-strip{background:#0a0f1a;border-bottom:1px solid #1e293b;padding:14px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.live-lbl{font-size:10px;color:var(--muted);letter-spacing:.06em;}
+.sum-strip{background:var(--paper);border-bottom:1px solid var(--border);padding:14px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .sum-card{text-align:center;}
 .sum-val{font-family:'Fraunces',serif;font-weight:800;font-size:22px;letter-spacing:-.03em;}
-.sum-lbl{font-size:9px;color:#475569;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
-.chips-row{padding:10px 20px;border-bottom:1px solid #1e293b;display:flex;flex-wrap:wrap;gap:5px;min-height:42px;align-items:center;}
-.chip{background:#1e293b;border:1px solid #334155;border-radius:5px;padding:3px 8px;font-size:10px;display:flex;align-items:center;gap:5px;color:#94a3b8;}
-.chip-qty{color:#6366f1;font-weight:700;}
-.chip-w{color:#f59e0b;font-weight:600;}
-.chip-btn{background:#0f172a;border:none;color:#64748b;cursor:pointer;border-radius:3px;padding:0 5px;font-size:11px;line-height:1.4;}
-.chip-btn:hover{color:#94a3b8;}
+.sum-lbl{font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+.chips-row{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:10px;min-height:64px;align-items:center;background:var(--white);}
+.chip{background:#eaf1ff;border:1.5px solid #2563eb;border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:9px;color:var(--ink);box-shadow:0 1px 3px rgba(37,99,235,.15);}
+.chip>span:first-child{font-size:20px;line-height:1;}
+.chip-qty{color:#4338ca;font-weight:700;font-size:14px;}
+.chip-w{color:#92400e;font-weight:700;font-size:14px;margin-left:2px;}
+.chip-btn{background:var(--white);border:1px solid #93a8d8;color:var(--ink);cursor:pointer;border-radius:6px;width:28px;height:28px;padding:0;font-size:16px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;}
+.chip-btn:hover{background:#2563eb;color:#fff;border-color:#2563eb;}
 .c-layout{display:grid;grid-template-columns:290px 1fr;}
-.c-sidebar{border-right:1px solid #1e293b;overflow-y:auto;max-height:640px;}
-.c-sidebar::-webkit-scrollbar{width:3px;}.c-sidebar::-webkit-scrollbar-thumb{background:#334155;}
+.c-sidebar{border-right:1px solid var(--border);overflow-y:auto;max-height:640px;background:var(--white);}
+.c-sidebar::-webkit-scrollbar{width:4px;}.c-sidebar::-webkit-scrollbar-thumb{background:#c9c2b5;}
 .c-panel{padding:14px 12px;}
-.c-cat{font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin:14px 0 6px;display:flex;align-items:center;gap:6px;}
+.c-cat{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin:14px 0 6px;display:flex;align-items:center;gap:6px;}
 .c-cat::before{content:'';width:3px;height:10px;border-radius:2px;}
 .eq-row{display:flex;align-items:center;gap:5px;margin-bottom:3px;}
-.eq-btn{flex:1;background:#1e293b;border:1px solid #1e293b;border-radius:6px;padding:7px 9px;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;color:#64748b;text-align:left;}
-.eq-btn:hover{border-color:#334155;color:#94a3b8;}
-.eq-btn.sel{background:#0f172a;border-color:#3b82f6;color:#e2e8f0;}
+.eq-btn{flex:1;background:var(--paper);border:1px solid var(--border);border-radius:6px;padding:7px 9px;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;color:#3a3530;text-align:left;}
+.eq-btn:hover{border-color:#a09880;color:var(--ink);background:#fff;}
+.eq-btn.sel{background:#eaf1ff;border-color:#2563eb;color:var(--ink);font-weight:700;box-shadow:inset 3px 0 0 #2563eb;}
 .eq-ic{font-size:13px;flex-shrink:0;}
 .eq-nm{flex:1;line-height:1.3;}
-.eq-w{font-size:10px;font-weight:700;color:#475569;flex-shrink:0;}
-.eq-btn.sel .eq-w{color:#3b82f6;}
+.eq-w{font-size:10px;font-weight:700;color:var(--muted);flex-shrink:0;}
+.eq-btn.sel .eq-w{color:#1d4ed8;}
 .qty-wrap{display:flex;align-items:center;gap:3px;flex-shrink:0;}
-.qbtn{background:#1e293b;border:none;border-radius:4px;width:19px;height:19px;cursor:pointer;color:#e2e8f0;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;}
-.qbtn:hover{background:#334155;}
+.qbtn{background:var(--paper2);border:1px solid var(--border);border-radius:4px;width:19px;height:19px;cursor:pointer;color:var(--ink);font-size:12px;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;}
+.qbtn:hover{background:var(--border);}
 .qnum{font-size:12px;font-weight:700;min-width:13px;text-align:center;}
-.ah-strip{padding:11px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #1e293b;}
-.ah-lbl{font-size:10px;color:#475569;letter-spacing:.08em;text-transform:uppercase;}
-.ah-tog{display:flex;border:1px solid #334155;border-radius:7px;overflow:hidden;}
+.ah-strip{padding:11px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.ah-lbl{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.ah-tog{display:flex;border:1px solid var(--border);border-radius:7px;overflow:hidden;}
 .ah-opt{flex:1;padding:6px 16px;text-align:center;cursor:pointer;font-size:12px;font-family:'DM Mono',monospace;border:none;transition:all .15s;font-weight:700;}
-.ah-opt.on{background:#3b82f6;color:#fff;}
-.ah-opt:not(.on){background:#1e293b;color:#475569;}
-.ah-opt:not(.on):hover{color:#94a3b8;}
+.ah-opt.on{background:#2563eb;color:#fff;}
+.ah-opt:not(.on){background:var(--paper2);color:#4a4540;}
+.ah-opt:not(.on):hover{color:var(--ink);}
 .r-area{padding:6px 20px 0;}
-.r-head{display:grid;grid-template-columns:86px 1fr 1fr 72px;gap:0;padding:8px 0;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#334155;border-bottom:1px solid #1e293b;}
-.r-row{display:grid;grid-template-columns:86px 1fr 1fr 72px;gap:0;align-items:center;padding:10px 0;border-bottom:1px solid #0f172a;transition:background .12s;}
-.r-row:hover{background:rgba(255,255,255,.02);}
-.r-row.rec{background:rgba(34,197,94,.04);}
-.r-row.over{opacity:.5;}
+.r-head{display:grid;grid-template-columns:86px 1fr 1fr 72px;gap:0;padding:8px 0;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
+.r-row{display:grid;grid-template-columns:86px 1fr 1fr 72px;gap:0;align-items:center;padding:10px 0;border-bottom:1px solid #e7e1d6;transition:background .12s;}
+.r-row:hover{background:rgba(13,17,23,.03);}
+.r-row.rec{background:rgba(21,128,61,.09);}
+.r-row.over{opacity:.72;}
 .mn{font-family:'Fraunces',serif;font-weight:800;font-size:14px;letter-spacing:-.02em;}
-.mr{font-size:9px;font-weight:700;letter-spacing:.04em;margin-top:2px;}
-.rv{font-family:'Fraunces',serif;font-weight:800;font-size:18px;letter-spacing:-.03em;line-height:1;}
-.rs{font-size:9px;color:#334155;margin-top:3px;}
-.pill{display:inline-block;padding:2px 6px;border-radius:99px;font-size:9px;font-weight:700;letter-spacing:.03em;}
-.btrack{background:#1e293b;height:5px;border-radius:3px;overflow:hidden;margin-top:4px;}
+.mr{font-size:10px;font-weight:700;letter-spacing:.04em;margin-top:2px;}
+.rv{font-family:'Fraunces',serif;font-weight:800;font-size:18px;letter-spacing:-.03em;line-height:1;color:var(--ink);}
+.rs{font-size:10px;color:var(--muted);margin-top:3px;}
+.pill{display:inline-block;padding:2px 6px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.03em;}
+.btrack{background:#e7e1d6;height:5px;border-radius:3px;overflow:hidden;margin-top:4px;}
 .bfill{height:100%;border-radius:3px;transition:width .4s cubic-bezier(.4,0,.2,1);}
-.lpct{font-size:9px;color:#334155;margin-top:3px;}
-.bc{font-size:11px;color:#64748b;font-weight:600;}
-.bs{font-size:9px;color:#334155;margin-top:2px;}
-.no-load{text-align:center;padding:40px 20px;color:#334155;font-size:13px;}
+.lpct{font-size:10px;color:var(--muted);margin-top:3px;}
+.bc{font-size:11px;color:#3a3530;font-weight:600;}
+.bs{font-size:10px;color:var(--muted);margin-top:2px;}
+.no-load{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;}
 .c-notes{padding:10px 20px;display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-.note{display:flex;gap:6px;font-size:10px;color:#334155;line-height:1.5;}
-.cta-bar{background:linear-gradient(135deg,#1e3a5f,#1e293b);border-top:1px solid #2563eb33;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.cta-main{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:#f1f5f9;}
-.cta-sub{font-size:11px;color:#64748b;margin-top:2px;}
+.note{display:flex;gap:6px;font-size:11px;color:#4a4540;line-height:1.5;}
+.cta-bar{background:var(--paper2);border-top:1px solid var(--border);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.cta-main{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--ink);}
+.cta-sub{font-size:11px;color:var(--muted);margin-top:2px;}
 .cta-btn{background:#2563eb;color:#fff;padding:10px 20px;border-radius:8px;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;text-decoration:none;display:flex;align-items:center;gap:7px;white-space:nowrap;}
 .cta-btn:hover{background:#1d4ed8;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
@@ -298,11 +299,11 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 .prod-card-cta{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
 .prod-card-buy{background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;font-size:12px;font-weight:700;text-align:center;text-decoration:none;font-family:'Outfit',sans-serif;transition:background .15s;}
 .prod-card-buy:hover{background:#a33508;}
-.prod-card-wa{background:#25d366;color:#fff;padding:9px 16px;border-radius:8px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s;}
-.prod-card-wa:hover{background:#1da84d;}
-.calc-rec-box{background:#0a0f1a;border:1px solid #1e293b;border-radius:12px;padding:20px 22px;margin:0 20px 12px;}
-.calc-rec-title{font-family:'Fraunces',serif;font-weight:800;font-size:16px;color:#f1f5f9;margin-bottom:4px;}
-.calc-rec-sub{font-size:11px;color:#475569;margin-bottom:14px;font-family:'DM Mono',monospace;}
+.prod-card-wa{background:#15803d;color:#fff;padding:9px 16px;border-radius:8px;font-size:11px;font-weight:700;text-align:center;text-decoration:none;font-family:'DM Mono',monospace;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s;}
+.prod-card-wa:hover{background:#166534;}
+.calc-rec-box{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:0 20px 12px;}
+.calc-rec-title{font-family:'Fraunces',serif;font-weight:800;font-size:16px;color:var(--ink);margin-bottom:4px;}
+.calc-rec-sub{font-size:11px;color:var(--muted);margin-bottom:14px;font-family:'DM Mono',monospace;}
 /* ── PARTNER STRIP ── */
 .partner-strip-wrap{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:32px 40px;}
 .partner-strip-inner{max-width:1000px;margin:0 auto;}
@@ -698,42 +699,42 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <div style="margin-left:auto;display:flex;align-items:center;gap:8px;"><div class="live-dot"></div><span class="live-lbl">CANLI HESAPLAMA</span></div>
     </div>
     <div class="sum-strip">
-      <div class="sum-card"><div class="sum-val" id="sw" style="color:#f59e0b;">0 W</div><div class="sum-lbl">Toplam Yük (Watt)</div></div>
-      <div class="sum-card"><div class="sum-val" id="sv" style="color:#6366f1;">0 VA</div><div class="sum-lbl">Görünür Güç (VA)</div></div>
-      <div class="sum-card"><div class="sum-val" id="si" style="color:#22c55e;">0</div><div class="sum-lbl">Seçili Ekipman</div></div>
+      <div class="sum-card"><div class="sum-val" id="sw" style="color:#92400e;">0 W</div><div class="sum-lbl">Toplam Yük (Watt)</div></div>
+      <div class="sum-card"><div class="sum-val" id="sv" style="color:#4338ca;">0 VA</div><div class="sum-lbl">Görünür Güç (VA)</div></div>
+      <div class="sum-card"><div class="sum-val" id="si" style="color:#166534;">0</div><div class="sum-lbl">Seçili Ekipman</div></div>
     </div>
-    <div class="chips-row" id="chips"><span style="font-size:11px;color:#334155;">Ekipman seçin...</span></div>
+    <div class="chips-row" id="chips"><span style="font-size:11px;color:#6b6356;">Ekipman seçin...</span></div>
     <div class="c-layout">
       <div class="c-sidebar">
         <div class="c-panel">
-          <div class="c-cat" style="color:#6366f1;--cc:#6366f1;"><span style="width:3px;height:10px;background:#6366f1;border-radius:2px;display:inline-block;"></span>Bilgisayar & Oyun</div>
+          <div class="c-cat" style="color:#4338ca;--cc:#6366f1;"><span style="width:3px;height:10px;background:#6366f1;border-radius:2px;display:inline-block;"></span>Bilgisayar & Oyun</div>
           <div class="eq-row"><button class="eq-btn" data-eq="1" data-w="300" data-ic="🖥️" data-nm="Masaüstü PC (Orta)"><span class="eq-ic">🖥️</span><span class="eq-nm">Masaüstü PC (Orta)</span><span class="eq-w">300W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="2" data-w="600" data-ic="🎮" data-nm="Masaüstü PC (Oyun/Yüksek)"><span class="eq-ic">🎮</span><span class="eq-nm">Masaüstü PC (Oyun/Yüksek)</span><span class="eq-w">600W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="3" data-w="65" data-ic="💻" data-nm="Laptop / Notebook"><span class="eq-ic">💻</span><span class="eq-nm">Laptop / Notebook</span><span class="eq-w">65W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" data-eq="4" data-w="35" data-ic="🖥️" data-nm="Monitör 24\""><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 24"</span><span class="eq-w">35W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" data-eq="5" data-w="60" data-ic="🖥️" data-nm="Monitör 27\" 4K"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 27" (4K)</span><span class="eq-w">60W</span></button></div>
-          <div class="c-cat" style="color:#0ea5e9;"><span style="width:3px;height:10px;background:#0ea5e9;border-radius:2px;display:inline-block;"></span>Ağ & Sunucu</div>
+          <div class="eq-row"><button class="eq-btn" data-eq="4" data-w="35" data-ic="🖥️" data-nm="Monitör 24&quot;"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 24"</span><span class="eq-w">35W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="5" data-w="60" data-ic="🖥️" data-nm="Monitör 27&quot; 4K"><span class="eq-ic">🖥️</span><span class="eq-nm">Monitör 27" (4K)</span><span class="eq-w">60W</span></button></div>
+          <div class="c-cat" style="color:#0369a1;"><span style="width:3px;height:10px;background:#0ea5e9;border-radius:2px;display:inline-block;"></span>Ağ & Sunucu</div>
           <div class="eq-row"><button class="eq-btn" data-eq="6" data-w="20" data-ic="📡" data-nm="Modem / Router"><span class="eq-ic">📡</span><span class="eq-nm">Modem / Router</span><span class="eq-w">20W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="7" data-w="15" data-ic="🔌" data-nm="Network Switch (8P)"><span class="eq-ic">🔌</span><span class="eq-nm">Network Switch (8 port)</span><span class="eq-w">15W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="8" data-w="30" data-ic="💾" data-nm="NAS Depolama (2 disk)"><span class="eq-ic">💾</span><span class="eq-nm">NAS Depolama (2 disk)</span><span class="eq-w">30W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="9" data-w="350" data-ic="🗄️" data-nm="Sunucu Tower 1 CPU"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Tower, 1 CPU)</span><span class="eq-w">350W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="10" data-w="700" data-ic="🗄️" data-nm="Sunucu Rack 2 CPU"><span class="eq-ic">🗄️</span><span class="eq-nm">Sunucu (Rack, 2 CPU)</span><span class="eq-w">700W</span></button></div>
-          <div class="c-cat" style="color:#f59e0b;"><span style="width:3px;height:10px;background:#f59e0b;border-radius:2px;display:inline-block;"></span>Ev & Isıtma</div>
+          <div class="c-cat" style="color:#b45309;"><span style="width:3px;height:10px;background:#f59e0b;border-radius:2px;display:inline-block;"></span>Ev & Isıtma</div>
           <div class="eq-row"><button class="eq-btn" data-eq="11" data-w="150" data-ic="🔥" data-nm="Kombi (Standart)"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Standart)</span><span class="eq-w">150W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="12" data-w="280" data-ic="🔥" data-nm="Kombi (Yüksek Verimli)"><span class="eq-ic">🔥</span><span class="eq-nm">Kombi (Yüksek Verimli)</span><span class="eq-w">280W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="13" data-w="120" data-ic="❄️" data-nm="Buzdolabı A++"><span class="eq-ic">❄️</span><span class="eq-nm">Buzdolabı (A++)</span><span class="eq-w">120W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" data-eq="14" data-w="80" data-ic="📺" data-nm="Televizyon 50\" LED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 50" LED</span><span class="eq-w">80W</span></button></div>
-          <div class="eq-row"><button class="eq-btn" data-eq="15" data-w="120" data-ic="📺" data-nm="Televizyon 65\" OLED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 65" OLED</span><span class="eq-w">120W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="14" data-w="80" data-ic="📺" data-nm="Televizyon 50&quot; LED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 50" LED</span><span class="eq-w">80W</span></button></div>
+          <div class="eq-row"><button class="eq-btn" data-eq="15" data-w="120" data-ic="📺" data-nm="Televizyon 65&quot; OLED"><span class="eq-ic">📺</span><span class="eq-nm">Televizyon 65" OLED</span><span class="eq-w">120W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="16" data-w="20" data-ic="📡" data-nm="Uydu Alıcısı"><span class="eq-ic">📡</span><span class="eq-nm">Uydu Alıcısı</span><span class="eq-w">20W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="17" data-w="10" data-ic="💡" data-nm="LED Panel 10W"><span class="eq-ic">💡</span><span class="eq-nm">Aydınlatma (LED Panel)</span><span class="eq-w">10W</span></button></div>
-          <div class="c-cat" style="color:#a855f7;"><span style="width:3px;height:10px;background:#a855f7;border-radius:2px;display:inline-block;"></span>Asansör</div>
+          <div class="c-cat" style="color:#7e22ce;"><span style="width:3px;height:10px;background:#a855f7;border-radius:2px;display:inline-block;"></span>Asansör</div>
           <div class="eq-row"><button class="eq-btn" data-eq="18" data-w="1500" data-ic="🛗" data-nm="Asansör Motoru (Küçük)"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Küçük)</span><span class="eq-w">1500W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="19" data-w="2500" data-ic="🛗" data-nm="Asansör Motoru (Orta)"><span class="eq-ic">🛗</span><span class="eq-nm">Asansör Motoru (Orta)</span><span class="eq-w">2500W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="20" data-w="80" data-ic="🎛️" data-nm="Asansör Kontrol Kartı"><span class="eq-ic">🎛️</span><span class="eq-nm">Asansör Kontrol Kartı</span><span class="eq-w">80W</span></button></div>
-          <div class="c-cat" style="color:#ef4444;"><span style="width:3px;height:10px;background:#ef4444;border-radius:2px;display:inline-block;"></span>Güvenlik</div>
+          <div class="c-cat" style="color:#b91c1c;"><span style="width:3px;height:10px;background:#ef4444;border-radius:2px;display:inline-block;"></span>Güvenlik</div>
           <div class="eq-row"><button class="eq-btn" data-eq="21" data-w="8" data-ic="📷" data-nm="IP Kamera"><span class="eq-ic">📷</span><span class="eq-nm">IP Kamera (adet başına)</span><span class="eq-w">8W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="22" data-w="25" data-ic="📷" data-nm="DVR / NVR Kayıt"><span class="eq-ic">📷</span><span class="eq-nm">DVR / NVR Kayıt Cihazı</span><span class="eq-w">25W</span></button></div>
-          <div class="c-cat" style="color:#10b981;"><span style="width:3px;height:10px;background:#10b981;border-radius:2px;display:inline-block;"></span>Ofis</div>
+          <div class="c-cat" style="color:#047857;"><span style="width:3px;height:10px;background:#10b981;border-radius:2px;display:inline-block;"></span>Ofis</div>
           <div class="eq-row"><button class="eq-btn" data-eq="23" data-w="30" data-ic="💳" data-nm="POS Terminali"><span class="eq-ic">💳</span><span class="eq-nm">POS Terminali</span><span class="eq-w">30W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="24" data-w="400" data-ic="🖨️" data-nm="Yazıcı Lazer"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Lazer)</span><span class="eq-w">400W</span></button></div>
           <div class="eq-row"><button class="eq-btn" data-eq="25" data-w="30" data-ic="🖨️" data-nm="Yazıcı Mürekkep"><span class="eq-ic">🖨️</span><span class="eq-nm">Yazıcı (Mürekkep)</span><span class="eq-w">30W</span></button></div>
@@ -746,7 +747,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
             <button class="ah-opt" id="ah7" data-ah="7">7 Ah</button>
             <button class="ah-opt on" id="ah9" data-ah="9">9 Ah</button>
           </div>
-          <span style="font-size:10px;color:#334155;margin-left:8px;">12V · VRLA Kurşun-Asit</span>
+          <span style="font-size:10px;color:#6b6356;margin-left:8px;">12V · VRLA Kurşun-Asit</span>
         </div>
         <div class="r-area">
           <div class="r-head">
@@ -756,7 +757,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
             <span>Akü</span>
           </div>
           <div id="rrows"></div>
-          <div id="nomsg" class="no-load">← Sol panelden ekipman seçin.<br><span style="font-size:11px;color:#1e293b;margin-top:5px;display:block;">Her modelde kaç dakika besleme alabileceğinizi göreceksiniz.</span></div>
+          <div id="nomsg" class="no-load">← Sol panelden ekipman seçin.<br><span style="font-size:11px;color:#6b6356;margin-top:5px;display:block;">Her modelde kaç dakika besleme alabileceğinizi göreceksiniz.</span></div>
         </div>
         <div class="c-notes">
           <div class="note"><span>📐</span><span>Güç faktörü 0.7 baz alınmıştır (VA = W ÷ 0.7)</span></div>
@@ -778,7 +779,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
       <div><div class="cta-main" id="ctamain">İhtiyacınıza uygun modeli buldunuz mu?</div><div class="cta-sub" id="ctasub">Hesaplanan yüke uygun UPS modellerini stoktan inceleyin.</div></div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <a id="ctabtn" href="https://www.aytechelektromarket.com" target="_blank" class="cta-btn">🛒 Modelleri İncele</a>
-        <a id="ctawa" href="#" target="_blank" class="cta-btn" style="background:#25d366;">
+        <a id="ctawa" href="#" target="_blank" class="cta-btn" style="background:#15803d;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.85L0 24l6.314-1.506A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.865 9.865 0 01-5.022-1.37l-.36-.214-3.742.892.946-3.648-.235-.374A9.861 9.861 0 012.118 12C2.118 6.53 6.53 2.118 12 2.118c5.47 0 9.882 4.412 9.882 9.882 0 5.47-4.412 9.882-9.882 9.882z"/></svg>
           İndirimli Teklif Al
         </a>
@@ -1018,18 +1019,18 @@ function getSt(mva, tva) {
   return 'low';
 }
 var SM = {
-  idle:{l:'—',c:'#334155'},
-  over:{l:'AŞIM',c:'#ef4444'},
-  warn:{l:'Yüksek Yük',c:'#f97316'},
-  good:{l:'İdeal ★',c:'#22c55e'},
-  low: {l:'Düşük Yük',c:'#3b82f6'}
+  idle:{l:'—',c:'#6b6356'},
+  over:{l:'AŞIM',c:'#b91c1c'},
+  warn:{l:'Yüksek Yük',c:'#c2410c'},
+  good:{l:'İdeal ★',c:'#15803d'},
+  low: {l:'Düşük Yük',c:'#1d4ed8'}
 };
 
 function renderChips() {
   var a = document.getElementById('chips');
   if (!a) return;
   var ks = Object.keys(EQ);
-  if (!ks.length) { a.innerHTML='<span style="font-size:11px;color:#334155;">Ekipman seçin...</span>'; return; }
+  if (!ks.length) { a.innerHTML='<span style="font-size:13px;color:#6b6356;">Ekipman seçin...</span>'; return; }
   a.innerHTML = ks.map(function(id){
     var e = EQ[id];
     return '<div class="chip">'
@@ -1119,7 +1120,7 @@ function getRule(va, w) {
 
 function cardHTML(p) {
   return '<div class="prod-card' + (p.hi ? ' highlight' : '') + '">'
-    + '<span class="prod-card-badge" style="background:'+p.bc+'22;color:'+p.bc+';">'+p.badge+'</span>'
+    + '<span class="prod-card-badge" style="background:'+p.bc+'22;color:'+({'#22c55e':'#15803d','#a855f7':'#7e22ce','#3b82f6':'#1d4ed8','#6366f1':'#4338ca','#f59e0b':'#92400e'}[p.bc]||p.bc)+';">'+p.badge+'</span>'
     + '<div class="prod-card-name">'+p.name+'</div>'
     + '<div class="prod-card-desc">'+p.desc+'</div>'
     + '<div class="prod-card-cta">'
@@ -1205,17 +1206,17 @@ function render() {
     var lp = Math.min(Math.round((va/m.va)*100), 100);
     var bc = isOv ? '#ef4444' : (st==='warn' ? '#f97316' : '#22c55e');
     return '<div class="r-row' + (isRec?' rec':'') + (isOv?' over':'') + '">'
-      + '<div><div class="mn" style="color:'+(isRec?'#22c55e':isOv?'#ef4444':'#f1f5f9')+';">'+m.n+'</div>'
-      + (isRec ? '<div class="mr" style="color:#22c55e;">★ ÖNERİLEN</div>' : '')
+      + '<div><div class="mn" style="color:'+(isRec?'#15803d':isOv?'#b91c1c':'#0d1117')+';">'+m.n+'</div>'
+      + (isRec ? '<div class="mr" style="color:#15803d;">★ ÖNERİLEN</div>' : '')
       + '</div>'
       + '<div>' + (isOv
-          ? '<div style="font-size:12px;color:#ef4444;font-weight:700;">— Yetersiz —</div>'
+          ? '<div style="font-size:12px;color:#b91c1c;font-weight:700;">— Yetersiz —</div>'
           : '<div class="rv">'+mLabel(mn)+'</div><div class="rs">'+m.b+'×12V'+AH+'Ah · '+Math.round(m.b*V12*AH*EFF)+'Wh</div>')
       + '</div>'
       + '<div style="padding-right:10px;">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;">'
       + '<span class="pill" style="background:'+smd.c+'22;color:'+smd.c+';">'+smd.l+'</span>'
-      + '<span style="font-size:9px;color:#334155;">'+lp+'%</span></div>'
+      + '<span style="font-size:10px;color:#6b6356;">'+lp+'%</span></div>'
       + '<div class="btrack"><div class="bfill" style="width:'+lp+'%;background:'+bc+';"></div></div>'
       + '<div class="lpct">'+va+' / '+m.va+' VA</div>'
       + '</div>'
@@ -1245,6 +1246,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Miktar azalt
     var qm = e.target.closest('[data-qm]');
     if (qm) { chgQ(parseInt(qm.getAttribute('data-qm')), -1); return; }
+    // Akü kapasitesi (7Ah / 9Ah)
+    var ah = e.target.closest('[data-ah]');
+    if (ah) { setAh(parseInt(ah.getAttribute('data-ah'), 10)); return; }
   });
 });
 </script>
