@@ -205,6 +205,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
 .r-row.over{opacity:.72;}
 .mn{font-family:'Fraunces',serif;font-weight:800;font-size:14px;letter-spacing:-.02em;}
 .mr{font-size:10px;font-weight:700;letter-spacing:.04em;margin-top:2px;}
+.mt{font-size:10px;line-height:1.3;color:var(--muted);margin-top:2px;}
 .rv{font-family:'Fraunces',serif;font-weight:800;font-size:18px;letter-spacing:-.03em;line-height:1;color:var(--ink);}
 .rs{font-size:10px;color:var(--muted);margin-top:3px;}
 .pill{display:inline-block;padding:2px 6px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.03em;}
@@ -490,7 +491,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
         </table>
         <div class="info-box"><strong>AVR (Otomatik Voltaj Düzenleyici):</strong> Voltajı akü kullanmadan sabit tutan devredir. Türkiye şebekesinin dalgalı yapısında büyük avantaj sağlar.</div>
         <h3 id="g3">3. VA ile Watt Farkı</h3>
-        <p>VA görünür güç, Watt ise gerçek güçtir. Formül: <strong style="color:var(--paper);">Watt = VA × Güç Faktörü (tipik: 0.7)</strong><br>Pratik hesap: Tüm cihazların wattını toplayın → 1.25 ile çarpın → 0.7'ye bölün → Çıkan VA'ya en yakın modeli seçin. <button data-page="calc" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">Hesaplayıcıyı kullanın →</button></p>
+        <p>VA görünür güç, Watt ise gerçek güçtir. Formül: <strong style="color:var(--paper);">Watt = VA × Güç Faktörü (tipik: 0.7)</strong><br>Pratik hesap: Tüm cihazların wattını toplayın → 1.25 ile çarpın → Line-Interactive için 0.7'ye, Online için 0.9'a bölün → Çıkan VA'ya en yakın modeli seçin. <button data-page="calc" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:15px;font-family:inherit;text-decoration:underline;">Hesaplayıcıyı kullanın →</button></p>
         <h3 id="g4">4. Akü Süresi</h3>
         <p>%50 yük için 1 kVA (2×9Ah) model ≈ 14 dakika. %25 yükte 30+ dakika. Kutudaki süre genellikle %50 yük varsayımı ile verilmiştir. Kesin hesap için hesaplayıcımızı kullanın.</p>
         <h3 id="g5">5. Sinüs Çıkışı</h3>
@@ -700,7 +701,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
     </div>
     <div class="sum-strip">
       <div class="sum-card"><div class="sum-val" id="sw" style="color:#92400e;">0 W</div><div class="sum-lbl">Toplam Yük (Watt)</div></div>
-      <div class="sum-card"><div class="sum-val" id="sv" style="color:#4338ca;">0 VA</div><div class="sum-lbl">Görünür Güç (VA)</div></div>
+      <div class="sum-card"><div class="sum-val" id="sv" style="color:#4338ca;">0 VA</div><div class="sum-lbl" id="svl">Görünür Güç (VA)</div></div>
       <div class="sum-card"><div class="sum-val" id="si" style="color:#166534;">0</div><div class="sum-lbl">Seçili Ekipman</div></div>
     </div>
     <div class="chips-row" id="chips"><span style="font-size:11px;color:#6b6356;">Ekipman seçin...</span></div>
@@ -760,7 +761,7 @@ footer{background:var(--ink);color:#4a4540;padding:56px 40px 28px;}
           <div id="nomsg" class="no-load">← Sol panelden ekipman seçin.<br><span style="font-size:11px;color:#6b6356;margin-top:5px;display:block;">Her modelde kaç dakika besleme alabileceğinizi göreceksiniz.</span></div>
         </div>
         <div class="c-notes">
-          <div class="note"><span>📐</span><span>Güç faktörü 0.7 baz alınmıştır (VA = W ÷ 0.7)</span></div>
+          <div class="note"><span>📐</span><span>Güç faktörü: Line-Interactive 0.7, Online 0.9 (VA = W ÷ PF)</span></div>
           <div class="note"><span>🔋</span><span>Akü verimi %85 hesaplanmıştır (VRLA AGM)</span></div>
           <div class="note"><span>⚠️</span><span>%80 üzeri yük akü ömrünü kısaltır, %50–70 ideal</span></div>
           <div class="note"><span>🌡️</span><span>Gerçek süre: sıcaklık, akü yaşı ve yüke göre değişir</span></div>
@@ -953,16 +954,18 @@ function submitForm() {
 
 // ── HESAPLAYICI ──
 var MODELS = [
-  {n:'650 VA', va:650,   b:1 },
-  {n:'700 VA', va:700,   b:1 },
-  {n:'850 VA', va:850,   b:1 },
-  {n:'1 kVA',  va:1000,  b:2 },
-  {n:'2 kVA',  va:2000,  b:4 },
-  {n:'3 kVA',  va:3000,  b:6 },
-  {n:'6 kVA',  va:6000,  b:16},
-  {n:'10 kVA', va:10000, b:20}
+  {n:'650 VA', va:650,   b:1,  t:'Line-Int.', pf:0.7},
+  {n:'700 VA', va:700,   b:1,  t:'Line-Int.', pf:0.7},
+  {n:'850 VA', va:850,   b:1,  t:'Line-Int.', pf:0.7},
+  {n:'1 kVA',  va:1000,  b:2,  t:'Online',    pf:0.9},
+  {n:'2 kVA',  va:2000,  b:4,  t:'Online',    pf:0.9},
+  {n:'3 kVA',  va:3000,  b:6,  t:'Online',    pf:0.9},
+  {n:'6 kVA',  va:6000,  b:16, t:'Online',    pf:0.9},
+  {n:'10 kVA', va:10000, b:20, t:'Online',    pf:0.9}
 ];
-var PF=0.7, EFF=0.85, V12=12, EQ={}, AH=9;
+// Güç faktörü: Line-Interactive 0.7, Online 0.9 (model bazında MODELS içinde)
+var PF_LI=0.7, PF_ON=0.9, EFF=0.85, V12=12, EQ={}, AH=9;
+function reqVA(w, m) { return Math.round(w / m.pf); }
 
 function setAh(a) {
   AH = a;
@@ -995,7 +998,7 @@ function chgQ(id, d) {
 function totals() {
   var w=0, i=0;
   Object.keys(EQ).forEach(function(k){ w += EQ[k].w * EQ[k].q; i += EQ[k].q; });
-  return { w:w, va:Math.round(w/PF), i:i };
+  return { w:w, va:Math.round(w/PF_LI), vaOn:Math.round(w/PF_ON), i:i };
 }
 
 function calcMins(tw, m) {
@@ -1138,6 +1141,7 @@ function render() {
   var sw=document.getElementById('sw'), sv=document.getElementById('sv'), si=document.getElementById('si');
   if(sw) sw.textContent = w + ' W';
   if(sv) sv.textContent = va + ' VA';
+  var svl=document.getElementById('svl'); if(svl) svl.textContent = w>0 ? 'Görünür Güç (VA) · Online: ' + t.vaOn + ' VA' : 'Görünür Güç (VA)';
   if(si) si.textContent = items;
 
   var rows = document.getElementById('rrows');
@@ -1156,14 +1160,14 @@ function render() {
   if(nm) nm.style.display='none';
   if(cb) cb.style.display='flex';
 
-  var best = MODELS.find(function(m){ return getSt(m.va,va)==='good'; })
-          || MODELS.find(function(m){ return va<=m.va; });
+  var best = MODELS.find(function(m){ return getSt(m.va,reqVA(w,m))==='good'; })
+          || MODELS.find(function(m){ return reqVA(w,m)<=m.va; });
 
   // CTA bar güncelle
   if (best) {
     var cm=document.getElementById('ctamain'), cs=document.getElementById('ctasub');
     if(cm) cm.textContent = 'Önerilen kapasite: ' + best.n;
-    if(cs) cs.textContent = 'Hesaplanan ' + va + ' VA yüke uygun modelleri stoktan inceleyin.';
+    if(cs) cs.textContent = 'Hesaplanan ' + reqVA(w,best) + ' VA yüke uygun modelleri stoktan inceleyin.';
     var btn   = document.getElementById('ctabtn');
     var wabtn = document.getElementById('ctawa');
     var hasAs = EQ[18]||EQ[19]||EQ[20];
@@ -1198,15 +1202,17 @@ function render() {
 
   // Akü süresi tablosu
   rows.innerHTML = MODELS.map(function(m){
-    var st   = getSt(m.va, va);
+    var rva  = reqVA(w, m);
+    var st   = getSt(m.va, rva);
     var smd  = SM[st];
     var isRec = (m===best);
     var isOv  = (st==='over');
     var mn = isOv ? null : calcMins(w,m);
-    var lp = Math.min(Math.round((va/m.va)*100), 100);
+    var lp = Math.min(Math.round((rva/m.va)*100), 100);
     var bc = isOv ? '#ef4444' : (st==='warn' ? '#f97316' : '#22c55e');
     return '<div class="r-row' + (isRec?' rec':'') + (isOv?' over':'') + '">'
       + '<div><div class="mn" style="color:'+(isRec?'#15803d':isOv?'#b91c1c':'#0d1117')+';">'+m.n+'</div>'
+      + '<div class="mt">'+m.t+'<br>PF '+m.pf.toFixed(1)+'</div>'
       + (isRec ? '<div class="mr" style="color:#15803d;">★ ÖNERİLEN</div>' : '')
       + '</div>'
       + '<div>' + (isOv
@@ -1218,7 +1224,7 @@ function render() {
       + '<span class="pill" style="background:'+smd.c+'22;color:'+smd.c+';">'+smd.l+'</span>'
       + '<span style="font-size:10px;color:#6b6356;">'+lp+'%</span></div>'
       + '<div class="btrack"><div class="bfill" style="width:'+lp+'%;background:'+bc+';"></div></div>'
-      + '<div class="lpct">'+va+' / '+m.va+' VA</div>'
+      + '<div class="lpct">'+rva+' / '+m.va+' VA</div>'
       + '</div>'
       + '<div><div class="bc">'+m.b+'×'+AH+'Ah</div><div class="bs">'+m.b+' adet</div></div>'
       + '</div>';
